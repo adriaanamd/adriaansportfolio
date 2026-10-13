@@ -11,7 +11,7 @@ export default function ProjectCard({
 }) {
   return (
     <article className="project-card glass">
-      <ProjectVisual project={project} index={index} />
+      <ProjectVisual project={project} />
       <div className="project-copy">
         <p className="eyebrow">{project.eyebrow}</p>
         <h3>{project.title}</h3>

@@ -2,6 +2,7 @@ export type ProjectAccent = "wine" | "sage" | "sand"
 
 export type FeaturedProject = {
   title: string
+  image: string
   eyebrow: string
   description: string
   tags: string[]

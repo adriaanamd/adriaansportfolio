@@ -6,6 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router"
 import appCss from "../index.css?url"
+import { NotFound } from "../pages/not-found"
 
 export const Route = createRootRoute({
   head: () => ({

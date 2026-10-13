@@ -435,13 +435,9 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
 .project-visual.wine { background: linear-gradient(145deg, #a34d5d, var(--wine)); }
 .project-visual.sage { background: linear-gradient(145deg, #a9bc96, var(--sage-dark)); }
 .project-visual.sand { background: linear-gradient(145deg, #efd8b5, #b98953); }
+.project-image { height: 100%; inset: 0; object-fit: cover; object-position: top; position: absolute; width: 100%; }
 .browser-bar { align-items: center; background: rgba(255,255,255,.87); display: flex; gap: 5px; height: 25px; padding-left: 10px; }
 .browser-bar span { background: rgba(40,40,36,.22); border-radius: 50%; height: 5px; width: 5px; }
-.visual-content { inset: 25px 0 0; padding: 30px; position: absolute; }
-.visual-number { color: rgba(255,255,255,.72); font-size: .65rem; letter-spacing: .14em; }
-.visual-mark { color: rgba(255,255,255,.9); font-family: var(--serif); font-size: 4.8rem; font-style: italic; margin-top: 25px; }
-.visual-line { background: rgba(255,255,255,.35); border-radius: 2px; display: block; height: 4px; margin-top: 9px; width: 47%; }
-.visual-line.wide { width: 72%; }
 .project-copy { padding: 22px 24px 27px; }
 .project-copy .eyebrow { font-size: .61rem; margin-bottom: 10px; }
 .project-copy h3 { color: var(--wine); font-size: 1.6rem; margin: 0 0 12px; }
