@@ -46,11 +46,11 @@ export default function Hero() {
                 src="/picture%20modified%20with%20ai%20for%20bg%20and%20clarity.png"
                 alt="Adriaan M. Dimate"
               />
-              <div className="portrait-grid" />
             </div>
             <div className="portrait-caption">
               <strong>Adriaan M. Dimate</strong>
               <span>Software · QA · Aviation</span>
+              <em className="portrait-motto">code meets cockpit</em>
             </div>
           </div>
           <div className="floating-note note-one">
@@ -61,7 +61,6 @@ export default function Hero() {
             <span className="note-icon">↗</span>
             Cleared for takeoff
           </div>
-          <div className="scribble">code meets cockpit</div>
         </div>
       </section>
 

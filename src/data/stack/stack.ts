@@ -48,6 +48,7 @@ export const stack: StackGroup[] = [
       { name: "PostgreSQL", icon: simpleIcon("postgresql") },
       { name: "MySQL", icon: simpleIcon("mysql") },
       { name: "MongoDB", icon: simpleIcon("mongodb") },
+      { name: "SQLite", icon: simpleIcon("sqlite") },
     ],
   },
   {
@@ -66,7 +67,7 @@ export const stack: StackGroup[] = [
       { name: "Cypress", icon: simpleIcon("cypress") },
       { name: "Playwright", icon: simpleIcon("playwright") },
       { name: "Postman", icon: simpleIcon("postman") },
-      { name: "Jest", icon: simpleIcon("jest") },
+      { name: "Vitest", icon: simpleIcon("vitest") },
       {
         name: "Manual testing (Game beta)",
         icon: simpleIcon("testinglibrary"),
