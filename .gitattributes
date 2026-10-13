@@ -144,3 +144,11 @@
 *.stl                filter=lfs diff=lfs merge=lfs -text
 *.nc                 filter=lfs diff=lfs merge=lfs -text
 *.mat                filter=lfs diff=lfs merge=lfs -text
+
+# Vercel needs these portfolio images as regular Git blobs. The deployment
+# checkout does not fetch Git LFS objects, so LFS pointers would be served as
+# the image responses.
+/src/project-assets/qa/*.png -filter -diff -merge -text
+/src/project-assets/swe/*.jpg -filter -diff -merge -text
+/src/project-assets/swe/*.png -filter -diff -merge -text
+/public/* -filter -diff -merge -text
