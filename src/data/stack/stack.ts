@@ -15,6 +15,10 @@ const simpleIcon = (slug: string) =>
 const customIcons = {
   aitum: "https://aitum.tv/logo.svg",
   ndi: "https://2136244485-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoUOsQwQ9oPpQ8LFlxOpLI%2Fuploads%2F1U4sO7iJ8fZEcxyRfpHb%2FPicture%202.png?alt=media&token=d4f3e033-ae57-478a-8320-2b5b459d2a49",
+  photoshop:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
+  playwright:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg",
   propresenter:
     "https://cdn.prod.website-files.com/662f9c93a3bc73a71bd8dc81/662ff398fa7d280a13da12d3_ProPresenter_white_svg.svg",
 }
@@ -65,7 +69,7 @@ export const stack: StackGroup[] = [
     group: "TESTING / QA",
     items: [
       { name: "Cypress", icon: simpleIcon("cypress") },
-      { name: "Playwright", icon: simpleIcon("playwright") },
+      { name: "Playwright", icon: customIcons.playwright },
       { name: "Postman", icon: simpleIcon("postman") },
       { name: "Vitest", icon: simpleIcon("vitest") },
       {
@@ -90,7 +94,7 @@ export const stack: StackGroup[] = [
   {
     group: "OTHER",
     items: [
-      { name: "Photoshop", icon: simpleIcon("adobephotoshop") },
+      { name: "Photoshop", icon: customIcons.photoshop },
       { name: "Trello", icon: simpleIcon("trello") },
       { name: "Jira", icon: simpleIcon("jira") },
     ],

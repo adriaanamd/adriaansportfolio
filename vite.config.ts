@@ -6,7 +6,15 @@ import path from "node:path"
 import { defineConfig } from "vite"
 
 export default defineConfig({
-  plugins: [tanstackStart(), nitro(), react(), tailwindcss()],
+  // Emit Vercel's Build Output API when Vercel runs the deployment build.
+  // Without this, Nitro falls back to a standalone node-server build and
+  // Vercel does not receive the generated public asset files correctly.
+  plugins: [
+    tanstackStart(),
+    nitro({ preset: "vercel" }),
+    react(),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
