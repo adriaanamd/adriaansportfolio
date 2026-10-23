@@ -4,15 +4,21 @@
   "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": "22.x"
+    "node": ">=24.22.1 <25"
   },
   "scripts": {
     "dev": "vite dev",
+    "predev": "node scripts/check-node-version.mjs",
     "build": "vite build",
+    "prebuild": "node scripts/check-node-version.mjs",
     "build:vercel": "vite build",
+    "prebuild:vercel": "node scripts/check-node-version.mjs",
     "preview": "vite preview",
+    "prepreview": "node scripts/check-node-version.mjs",
     "start": "vite preview",
-    "format": "oxfmt src vite.config.ts package.json tsconfig.json AGENTS.md CLAUDE.md"
+    "prestart": "node scripts/check-node-version.mjs",
+    "test:node-version": "node --test scripts/node-version.test.mjs",
+    "format": "oxfmt src scripts vite.config.ts package.json tsconfig.json AGENTS.md CLAUDE.md"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.170.42",
