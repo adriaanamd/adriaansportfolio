@@ -14,7 +14,7 @@ The Node.js security release published on October 21, 2026 lists Node.js 24.22.1
 - Require Node.js `>=24.22.1 <25` in `package.json`, so Vercel selects a patched Node 24 runtime and package-manager engine checks reject older versions.
 - Pin `.mise.toml` and add `.nvmrc` to Node.js `24.22.1` for reproducible local setup across the supported version managers.
 - Add a small, dependency-free Node version module with a minimum-version predicate and assertion.
-- Run the assertion through `predev`, `prebuild`, `prebuild:vercel`, and `prestart` lifecycle hooks so local development, Vercel builds, and preview starts fail before the application runs under an unsupported Node version.
+- Run the assertion through `predev`, `prebuild`, `prebuild:vercel`, `prepreview`, and `prestart` lifecycle hooks so local development, Vercel builds, and preview starts fail before the application runs under an unsupported Node version.
 
 ## Testing and verification
 
