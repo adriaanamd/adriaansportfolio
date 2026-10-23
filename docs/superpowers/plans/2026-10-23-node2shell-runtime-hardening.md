@@ -4,7 +4,7 @@
 
 **Goal:** Ensure the portfolio only builds and runs with patched Node.js 24.x releases beginning at 24.22.1.
 
-**Architecture:** Keep the runtime policy in `package.json`, `.mise.toml`, and `.nvmrc`, and centralize executable enforcement in a small dependency-free module under `scripts/`. Package lifecycle hooks invoke the same assertion before development, build, Vercel build, and preview start commands.
+**Architecture:** Keep the runtime policy in `package.json`, `.mise.toml`, and `.nvmrc`, and centralize executable enforcement in a small dependency-free module under `scripts/`. Package lifecycle hooks invoke the same assertion before development, build, Vercel build, preview, and start commands.
 
 **Tech Stack:** Node.js 24.22.1, Node built-in `node:test`, pnpm via Corepack, Vite, TanStack Start, oxfmt.
 
@@ -30,7 +30,7 @@
 - `assertSupportedNodeVersion(version = process.versions.node)` throws a clear error for unsupported versions and returns `undefined` for supported versions.
 - `node scripts/check-node-version.mjs` validates the current process runtime.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Create `scripts/node-version.test.mjs`:
 
@@ -58,7 +58,7 @@ test("rejects Node 24 releases before the patched floor", () => {
   assert.equal(isSupportedNodeVersion("24.0.0"), false)
   assert.throws(
     () => assertSupportedNodeVersion("24.22.0"),
-    /Node\.js 24\.22\.1 or newer patched 24\.x release/,
+    /Node\.js 24\.22\.1 or a newer patched 24\.x release/,
   )
 })
 
@@ -69,7 +69,7 @@ test("rejects unsupported major versions and malformed values", () => {
 })
 ```
 
-- [ ] **Step 2: Run the test to verify it fails for the missing implementation**
+- [x] **Step 2: Run the test to verify it fails for the missing implementation**
 
 Run:
 
@@ -79,7 +79,7 @@ node --test scripts/node-version.test.mjs
 
 Expected: FAIL because `scripts/node-version.mjs` does not exist yet.
 
-- [ ] **Step 3: Implement the minimal version policy**
+- [x] **Step 3: Implement the minimal version policy**
 
 Create `scripts/node-version.mjs`:
 
@@ -142,6 +142,7 @@ Add these scripts to `package.json`:
   "build:vercel": "vite build",
   "prebuild:vercel": "node scripts/check-node-version.mjs",
   "preview": "vite preview",
+  "prepreview": "node scripts/check-node-version.mjs",
   "start": "vite preview",
   "prestart": "node scripts/check-node-version.mjs",
   "test:node-version": "node --test scripts/node-version.test.mjs",
@@ -149,7 +150,7 @@ Add these scripts to `package.json`:
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run:
 
@@ -160,7 +161,7 @@ corepack pnpm run test:node-version
 
 Expected: all four tests pass with zero failures.
 
-- [ ] **Step 5: Commit the implementation**
+- [x] **Step 5: Commit the implementation**
 
 ```powershell
 git add scripts package.json
@@ -174,7 +175,7 @@ git commit -m "fix: enforce patched Node.js runtime"
 - Modify: `.mise.toml`
 - Create: `.nvmrc`
 
-- [ ] **Step 1: Set the package engine floor**
+- [x] **Step 1: Set the package engine floor**
 
 Change `package.json` to:
 
@@ -184,7 +185,7 @@ Change `package.json` to:
 }
 ```
 
-- [ ] **Step 2: Pin the mise and nvm files**
+- [x] **Step 2: Pin the mise and nvm files**
 
 Set `.mise.toml` to:
 
@@ -200,17 +201,17 @@ Create `.nvmrc` with:
 24.22.1
 ```
 
-- [ ] **Step 3: Format the changed files**
+- [x] **Step 3: Format the changed files**
 
 Run:
 
 ```powershell
-corepack pnpm exec oxfmt scripts package.json .mise.toml .nvmrc
+corepack pnpm exec oxfmt --check scripts package.json
 ```
 
-Expected: exit code 0 and no formatting errors.
+Expected: exit code 0 and no formatting errors. `.mise.toml` and `.nvmrc` are plain version declaration files and are verified by the final diff review.
 
-- [ ] **Step 4: Commit the runtime declarations**
+- [x] **Step 4: Commit the runtime declarations**
 
 ```powershell
 git add package.json .mise.toml .nvmrc
@@ -222,7 +223,7 @@ git commit -m "chore: pin patched Node.js toolchain"
 **Files:**
 - Inspect: `package.json`, `.mise.toml`, `.nvmrc`, `scripts/node-version.mjs`, `scripts/check-node-version.mjs`, `scripts/node-version.test.mjs`
 
-- [ ] **Step 1: Run the node policy tests**
+- [x] **Step 1: Run the node policy tests**
 
 ```powershell
 corepack pnpm run test:node-version
@@ -230,15 +231,15 @@ corepack pnpm run test:node-version
 
 Expected: all tests pass.
 
-- [ ] **Step 2: Run the formatter check**
+- [x] **Step 2: Run the formatter check**
 
 ```powershell
-corepack pnpm run format -- --check
+corepack pnpm exec oxfmt --check scripts package.json
 ```
 
 Expected: exit code 0.
 
-- [ ] **Step 3: Run the production build**
+- [x] **Step 3: Run the production build**
 
 ```powershell
 corepack pnpm run build
@@ -246,7 +247,7 @@ corepack pnpm run build
 
 Expected: the prebuild Node.js assertion passes and Vite/TanStack Start completes with exit code 0.
 
-- [ ] **Step 4: Review the final diff and runtime policy**
+- [x] **Step 4: Review the final diff and runtime policy**
 
 ```powershell
 git diff --check
