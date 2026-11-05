@@ -6,13 +6,15 @@ export default function Contact() {
       <div className="contact-inner">
         <p className="eyebrow">06 · Contact</p>
         <h2>
-          Have a project in mind?
+          Have an opportunity or project in mind?
           <br />
           <em>Let’s make it fly.</em>
         </h2>
         <p>
-          I’m open to software engineering, QA, and collaborative opportunities
-          where thoughtful work and dependable execution matter.
+          I’m actively seeking Junior QA / SDET and Software Engineering
+          roles—open to full-time junior positions, OJT placement, or
+          collaborative builds where thoughtful work and dependable execution
+          matter.
         </p>
         <a href="mailto:aadimate55@gmail.com" className="button cream-button">
           aadimate55@gmail.com <ArrowIcon />
