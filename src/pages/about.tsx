@@ -51,8 +51,8 @@ export default function About() {
               <span>BS Computer Science</span>
             </div>
             <div>
-              <strong>100+</strong>
-              <span>Live services supported</span>
+              <strong>140+</strong>
+              <span>Live productions supported</span>
             </div>
           </div>
         </aside>

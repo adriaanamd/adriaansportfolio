@@ -23,11 +23,23 @@ export default function WorkExperience() {
             <div className="timeline-marker">
               <span>0{index + 1}</span>
             </div>
-            <p className="timeline-date">{item.dates}</p>
             <div className="timeline-main">
-              <h3>{item.role}</h3>
-              <strong>{item.company}</strong>
-              <p>{item.text}</p>
+              <div className="timeline-header">
+                <div>
+                  <h3>{item.role}</h3>
+                  <p className="timeline-company">{item.company}</p>
+                </div>
+                <span className="timeline-date-badge">{item.dates}</span>
+              </div>
+              {item.bullets ? (
+                <ul className="timeline-bullets">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              ) : (
+                item.text && <p>{item.text}</p>
+              )}
               <div className="tags">
                 {item.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
