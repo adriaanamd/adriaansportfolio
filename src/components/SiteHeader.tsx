@@ -14,9 +14,10 @@ export default function SiteHeader({ archive = false }: { archive?: boolean }) {
         </nav>
       ) : (
         <nav aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
           <a href="#work">Work</a>
+          <a href="#stack">Stack</a>
+          <a href="#experience">Experience</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
       )}

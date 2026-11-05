@@ -21,14 +21,27 @@ export default function ProjectCard({
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noreferrer"
-          className="text-link"
-        >
-          View project <ExternalIcon />
-        </a>
+        <div className="project-links">
+          {project.liveDemo && (
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link live-demo"
+            >
+              <span className="live-demo-dot" aria-hidden="true" />
+              Live demo <ExternalIcon />
+            </a>
+          )}
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="text-link"
+          >
+            {project.liveDemo ? "View code" : "View project"} <ExternalIcon />
+          </a>
+        </div>
       </div>
     </article>
   )

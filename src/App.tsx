@@ -27,10 +27,10 @@ export default function App() {
     <main>
       <SiteHeader />
       <Hero />
-      <About />
+      <Projects />
       <Stack />
       <WorkExperience />
-      <Projects />
+      <About />
       <Contact />
     </main>
   )

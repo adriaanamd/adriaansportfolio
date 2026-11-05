@@ -1,4 +1,5 @@
 import ArrowIcon from "../components/ArrowIcon"
+import ExternalIcon from "../components/ExternalIcon"
 
 export default function Hero() {
   return (
@@ -12,17 +13,26 @@ export default function Hero() {
             Welcome to my journal
           </p>
           <h1>
-            I build for the
-            <em> real world.</em>
+            I'm Adriaan M.
+            <em> Dimate</em>
           </h1>
           <p className="hero-intro">
-            I’m Adriaan—a software engineer and quality assurance practitioner
-            pairing thoughtful interfaces with testing that holds up under
-            turbulence.
+            A software engineer and quality assurance practitioner building
+            thoughtful applications and reliable systems that hold steady
+            through turbulence using Playwright, Cypress, Vitest, Node.js, and
+            React.
           </p>
           <div className="hero-actions">
             <a href="#work" className="button primary">
               Explore my work <ArrowIcon />
+            </a>
+            <a
+              href="/final%20adriaan%20resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="button secondary"
+            >
+              View resume <ExternalIcon />
             </a>
             <a href="#about" className="button secondary">
               More about me
@@ -43,7 +53,7 @@ export default function Hero() {
             <div className="portrait-window">
               <img
                 className="portrait-image"
-                src="/picture%20modified%20with%20ai%20for%20bg%20and%20clarity.png"
+                src="/image.png"
                 alt="Adriaan M. Dimate"
               />
             </div>
@@ -53,29 +63,8 @@ export default function Hero() {
               <em className="portrait-motto">code meets cockpit</em>
             </div>
           </div>
-          <div className="floating-note note-one">
-            <span className="note-icon">✓</span>
-            Tested with care
-          </div>
-          <div className="floating-note note-two">
-            <span className="note-icon">↗</span>
-            Cleared for takeoff
-          </div>
         </div>
       </section>
-
-      <div className="marquee" aria-label="Areas of practice">
-        <div>
-          <span>Software engineering</span>
-          <i>✦</i>
-          <span>Quality assurance</span>
-          <i>✦</i>
-          <span>Test automation</span>
-          <i>✦</i>
-          <span>Thoughtful interfaces</span>
-          <i>✦</i>
-        </div>
-      </div>
     </>
   )
 }

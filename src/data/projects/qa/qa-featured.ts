@@ -22,6 +22,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
       "A structured acceptance pass for the inspection workflow, focused on input validation, classification confidence, and evidence around edge cases.",
     tags: ["Exploratory QA", "Data validation", "Acceptance"],
     link: "https://github.com/MeatLens-Freshness-Inspector/botchabuster",
+    liveDemo: "https://meatlensv2.netlify.app",
     accent: "sage",
   },
   {

@@ -51,14 +51,8 @@ export function ArchivePage({
           <strong>{String(projects.length).padStart(2, "0")} entries</strong>
         </div>
         <div className="dump-grid">
-          {projects.map(([title, detail, link], index) => (
-            <a
-              className="dump-card glass"
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-              key={title}
-            >
+          {projects.map(([title, detail, link, liveDemo], index) => (
+            <article className="dump-card glass" key={title}>
               <div className="dump-card-top">
                 <span>0{index + 1}</span>
                 <ExternalIcon />
@@ -72,10 +66,28 @@ export function ArchivePage({
               </div>
               <p>{detail}</p>
               <h2>{title}</h2>
-              <span className="dump-open">
-                Open project <ArrowIcon />
-              </span>
-            </a>
+              <div className="dump-card-links">
+                {liveDemo && (
+                  <a
+                    href={liveDemo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="dump-open live-demo"
+                  >
+                    <span className="live-demo-dot" aria-hidden="true" />
+                    Live demo <ExternalIcon />
+                  </a>
+                )}
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="dump-open"
+                >
+                  {liveDemo ? "View code" : "Open project"} <ArrowIcon />
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </section>

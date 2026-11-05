@@ -5,6 +5,7 @@ export const engineeringArchive: ArchiveProject[] = [
     "MeatLens",
     "TypeScript · thesis · in progress",
     "https://github.com/MeatLens-Freshness-Inspector/botchabuster",
+    "https://meatlensv2.netlify.app",
   ],
   [
     "ExamHub",
@@ -15,6 +16,7 @@ export const engineeringArchive: ArchiveProject[] = [
     "SnapBooth",
     "TypeScript · WebSocket · deployed",
     "https://github.com/Thalanas110/snapbooth",
+    "https://snapbooth-main.netlify.app/",
   ],
   [
     "MyLightDrugstore",

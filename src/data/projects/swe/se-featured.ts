@@ -22,6 +22,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
       "A freshness inspection platform designed to help users scan and assess meat. An active thesis project joining a practical interface with classification workflows.",
     tags: ["TypeScript", "React", "Computer vision"],
     link: "https://github.com/MeatLens-Freshness-Inspector/botchabuster",
+    liveDemo: "https://meatlensv2.netlify.app",
     accent: "sage",
   },
   {

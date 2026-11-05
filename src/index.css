@@ -444,6 +444,24 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
 .project-copy > p:not(.eyebrow) { color: var(--muted); font-size: .86rem; min-height: 84px; }
 .tags { display: flex; flex-wrap: wrap; gap: 7px; }
 .project-copy .text-link { margin-top: 20px; }
+.project-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+.project-links .text-link {
+  margin-top: 0;
+}
+.live-demo-dot {
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+}
 .engineering-heading { margin-top: 140px; }
 .dump-cta {
   align-items: center;
@@ -601,6 +619,12 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
   font-size: .76rem;
   font-weight: 600;
   gap: 8px;
+}
+.dump-card-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 .dump-footer {
   align-items: center;

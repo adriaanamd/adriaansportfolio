@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section className="contact-section" id="contact">
       <div className="contact-inner">
-        <p className="eyebrow">05 · Contact</p>
+        <p className="eyebrow">06 · Contact</p>
         <h2>
           Have a project in mind?
           <br />

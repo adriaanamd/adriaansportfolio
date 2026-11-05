@@ -7,7 +7,8 @@ export type FeaturedProject = {
   description: string
   tags: string[]
   link: string
+  liveDemo?: string
   accent: ProjectAccent
 }
 
-export type ArchiveProject = readonly [title: string, detail: string, link: string]
+export type ArchiveProject = readonly [title: string, detail: string, link: string, liveDemo?: string]

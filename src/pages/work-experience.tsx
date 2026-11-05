@@ -5,7 +5,7 @@ export default function WorkExperience() {
     <section className="section experience-section" id="experience">
       <div className="section-heading split-heading">
         <div>
-          <p className="eyebrow">02 · Experience</p>
+          <p className="eyebrow">04 · Experience</p>
           <h2>
             Where I’ve
             <br />

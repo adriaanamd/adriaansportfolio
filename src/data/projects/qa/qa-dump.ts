@@ -9,6 +9,7 @@ export const qaArchive: ArchiveProject[] = [
   [
     "SnapBooth — release QA",
     "Cross-browser · camera · WebSocket",
+    "https://github.com/Thalanas110/snapbooth",
     "https://snapbooth-main.netlify.app/",
   ],
   [
@@ -20,6 +21,7 @@ export const qaArchive: ArchiveProject[] = [
     "MeatLens — model acceptance",
     "Data validation · exploratory testing",
     "https://github.com/MeatLens-Freshness-Inspector/botchabuster",
+    "https://meatlensv2.netlify.app",
   ],
   [
     "New PDC 2 — concurrency checks",

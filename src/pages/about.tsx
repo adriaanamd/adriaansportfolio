@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section className="section about" id="about">
       <div className="section-heading">
-        <p className="eyebrow">01 · About me</p>
+        <p className="eyebrow">05 · About me</p>
         <h2>
           Precision in every line,
           <br />

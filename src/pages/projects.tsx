@@ -8,7 +8,7 @@ export default function Projects() {
     <section className="section work-section" id="work">
       <div className="section-heading split-heading">
         <div>
-          <p className="eyebrow">03 · Selected work</p>
+          <p className="eyebrow">01 · Selected work</p>
           <h2>
             Quality assurance,
             <br />
@@ -37,7 +37,7 @@ export default function Projects() {
 
       <div className="section-heading split-heading engineering-heading">
         <div>
-          <p className="eyebrow">04 · Selected work</p>
+          <p className="eyebrow">02 · Selected work</p>
           <h2>
             Software engineering,
             <br />

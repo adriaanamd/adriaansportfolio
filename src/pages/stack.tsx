@@ -39,7 +39,7 @@ export default function Stack() {
     <section className="section stack-section" id="stack">
       <div className="stack-intro">
         <div>
-          <p className="eyebrow">Current stack</p>
+          <p className="eyebrow">03 · Tech stack</p>
           <h2>
             What I <em>work with</em>
           </h2>
