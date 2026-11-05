@@ -42,7 +42,7 @@ export const stack: StackGroup[] = [
       { name: "Laravel", icon: simpleIcon("laravel") },
       { name: "Node.js", icon: simpleIcon("nodedotjs") },
       { name: "Supabase", icon: simpleIcon("supabase") },
-      { name: "Appwrite", icon: simpleIcon("appwrite") },
+      { name: "Deno", icon: simpleIcon("deno") },
       { name: "ExpressJS", icon: simpleIcon("express") },
     ],
   },
