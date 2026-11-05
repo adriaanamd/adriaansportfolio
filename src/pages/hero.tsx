@@ -17,10 +17,10 @@ export default function Hero() {
             <em> M. Dimate</em>
           </h1>
           <p className="hero-intro">
-            A software engineer and quality assurance practitioner building
-            thoughtful applications and reliable systems that hold steady
-            through turbulence using Playwright, Cypress, Vitest, Node.js, and
-            React.
+            A quality assurance engineer and SDET dedicated to breaking down
+            edge cases, automating robust test suites, and safeguarding
+            production reliability using Playwright, Cypress, Vitest, Node.js,
+            and React.
           </p>
           <div className="hero-actions">
             <a href="#work" className="button primary">
@@ -61,7 +61,7 @@ export default function Hero() {
             </div>
             <div className="portrait-caption">
               <strong>Adriaan M. Dimate</strong>
-              <span>Software · QA · Aviation</span>
+              <span>QA Engineer & SDET · Aviation</span>
               <em className="portrait-motto">code meets cockpit</em>
             </div>
           </div>

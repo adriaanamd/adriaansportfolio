@@ -18,7 +18,7 @@ export const experience: ExperienceItem[] = [
       "Rebuilt the church website from legacy Weebly into a custom full-stack platform serving 7 ministries with end-to-end SDLC ownership.",
       "Diagnosed and resolved 25+ production defects across web and media workflows, establishing structured defect triage.",
     ],
-    tags: ["Deno", "Cypress", "Playwright", "WebSockets", "SDET", "Full stack"],
+    tags: ["SDET", "Cypress", "Playwright", "Deno", "WebSockets", "Full stack"],
   },
   {
     dates: "Jan 2024 — Present",
@@ -48,8 +48,8 @@ export const experience: ExperienceItem[] = [
       "Filed 15 percentage and income tax returns via the BIR eBIRForms system and resolved 100+ customer inquiries.",
     ],
     tags: [
-      "Vitest",
       "Test automation",
+      "Vitest",
       "Desktop application",
       "Financial systems",
       "Bookkeeping",

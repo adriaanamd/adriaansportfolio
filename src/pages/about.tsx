@@ -14,14 +14,15 @@ export default function About() {
       <div className="about-grid">
         <div className="about-story">
           <p className="lead">
-            I’m an autistic developer with a dual passion: creating beautiful
-            digital experiences and conquering the skies.
+            I’m an autistic QA engineer and developer with a dual passion:
+            protecting product reliability and conquering the skies.
           </p>
           <p>
-            I merge aviation’s precision with software engineering’s creativity.
-            Whether I’m shipping a feature, filing a bug, or reading a flight
-            chart, the same discipline applies: understand the system, respect
-            the details, and prepare for edge cases.
+            I merge aviation’s checklist rigor with software quality
+            engineering. Whether I’m designing an automated regression suite,
+            logging a reproducible bug report, or reading a flight chart, the
+            same discipline applies: understand the system, respect the details,
+            and prepare for edge cases.
           </p>
           <p>
             I’m currently pursuing a BS in Computer Science at Gordon College
@@ -33,16 +34,17 @@ export default function About() {
         </div>
         <aside className="profile-notes">
           <div className="note-card sage-note">
-            <span>Current focus</span>
+            <span>Primary objective</span>
             <strong>
-              Building dependable digital products from spec to release.
+              Securing a Junior QA / SDET position (Full-time or OJT) to build
+              reliable automated tests.
             </strong>
           </div>
           <div className="note-card wine-note">
             <span>What I bring</span>
             <strong>
-              Pattern recognition, careful execution, and a quick-learning
-              mindset.
+              Pattern recognition, methodical edge-case analysis, and a
+              dependable test automation mindset.
             </strong>
           </div>
           <div className="mini-facts">

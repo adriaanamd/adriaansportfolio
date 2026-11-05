@@ -6,15 +6,14 @@ export default function Contact() {
       <div className="contact-inner">
         <p className="eyebrow">06 · Contact</p>
         <h2>
-          Have an opportunity or project in mind?
+          Have a QA opportunity in mind?
           <br />
           <em>Let’s make it fly.</em>
         </h2>
         <p>
-          I’m actively seeking Junior QA / SDET and Software Engineering
-          roles—open to full-time junior positions, OJT placement, or
-          collaborative builds where thoughtful work and dependable execution
-          matter.
+          I’m actively seeking Junior QA and SDET opportunities—open to
+          full-time junior roles, OJT placement, and testing challenges where
+          precision, test automation, and product reliability matter.
         </p>
         <a href="mailto:aadimate55@gmail.com" className="button cream-button">
           aadimate55@gmail.com <ArrowIcon />

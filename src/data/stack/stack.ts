@@ -25,6 +25,30 @@ const customIcons = {
 
 export const stack: StackGroup[] = [
   {
+    group: "TESTING / QA",
+    items: [
+      { name: "Cypress", icon: simpleIcon("cypress") },
+      { name: "Playwright", icon: customIcons.playwright },
+      { name: "Vitest", icon: simpleIcon("vitest") },
+      { name: "Postman", icon: simpleIcon("postman") },
+      { name: "Jira", icon: simpleIcon("jira") },
+      {
+        name: "Manual testing (Game beta)",
+        icon: simpleIcon("testinglibrary"),
+      },
+    ],
+  },
+  {
+    group: "CI/CD & TOOLS",
+    items: [
+      { name: "Docker", icon: simpleIcon("docker") },
+      { name: "Git", icon: simpleIcon("git") },
+      { name: "GitHub", icon: simpleIcon("github") },
+      { name: "Netlify", icon: simpleIcon("netlify") },
+      { name: "Vercel", icon: simpleIcon("vercel") },
+    ],
+  },
+  {
     group: "FRONTEND",
     items: [
       { name: "HTML5/CSS3/JS", icon: simpleIcon("html5") },
@@ -38,11 +62,11 @@ export const stack: StackGroup[] = [
   {
     group: "BACKEND",
     items: [
+      { name: "Node.js", icon: simpleIcon("nodedotjs") },
+      { name: "Deno", icon: simpleIcon("deno") },
       { name: "PHP", icon: simpleIcon("php") },
       { name: "Laravel", icon: simpleIcon("laravel") },
-      { name: "Node.js", icon: simpleIcon("nodedotjs") },
       { name: "Supabase", icon: simpleIcon("supabase") },
-      { name: "Deno", icon: simpleIcon("deno") },
       { name: "ExpressJS", icon: simpleIcon("express") },
     ],
   },
@@ -56,29 +80,6 @@ export const stack: StackGroup[] = [
     ],
   },
   {
-    group: "CI/CD",
-    items: [
-      { name: "Docker", icon: simpleIcon("docker") },
-      { name: "Git", icon: simpleIcon("git") },
-      { name: "GitHub", icon: simpleIcon("github") },
-      { name: "Netlify", icon: simpleIcon("netlify") },
-      { name: "Vercel", icon: simpleIcon("vercel") },
-    ],
-  },
-  {
-    group: "TESTING / QA",
-    items: [
-      { name: "Cypress", icon: simpleIcon("cypress") },
-      { name: "Playwright", icon: customIcons.playwright },
-      { name: "Postman", icon: simpleIcon("postman") },
-      { name: "Vitest", icon: simpleIcon("vitest") },
-      {
-        name: "Manual testing (Game beta)",
-        icon: simpleIcon("testinglibrary"),
-      },
-    ],
-  },
-  {
     group: "STREAM & EVENT PRODUCTION",
     items: [
       { name: "OBS", icon: simpleIcon("obsstudio") },
@@ -86,7 +87,7 @@ export const stack: StackGroup[] = [
       { name: "Aitum", icon: customIcons.aitum, iconBackground: "#24221f" },
       {
         name: "ProPresenter",
-        icon: customIcons.propresenter,
+        icon: customIcons.propPresenter ?? customIcons.propresenter,
         iconBackground: "#24221f",
       },
     ],
@@ -96,7 +97,6 @@ export const stack: StackGroup[] = [
     items: [
       { name: "Photoshop", icon: customIcons.photoshop },
       { name: "Trello", icon: simpleIcon("trello") },
-      { name: "Jira", icon: simpleIcon("jira") },
     ],
   },
 ]
