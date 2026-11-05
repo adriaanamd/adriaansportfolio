@@ -13,8 +13,8 @@ export default function Hero() {
             Welcome to my journal
           </p>
           <h1>
-            I'm Adriaan M.
-            <em> Dimate</em>
+            I'm Adriaan
+            <em> M. Dimate</em>
           </h1>
           <p className="hero-intro">
             A software engineer and quality assurance practitioner building
