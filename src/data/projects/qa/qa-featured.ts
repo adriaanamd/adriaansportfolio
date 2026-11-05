@@ -11,7 +11,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     description:
       "An automated Exam Management System designed for modern classrooms. Includes real-time monitoring, anti-cheat countermeasures, and a centralized dashboard for student performance analytics. Created as the final requirement for Frontend and Backend Electives.",
     tags: ["Playwright", "Test design", "Regression"],
-    link: "https://github.com/Thalanas110/ExamHub",
+    link: "https://github.com/adriaanamd/ExamHub",
     accent: "wine",
   },
   {
@@ -21,7 +21,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     description:
       "A structured acceptance pass for the inspection workflow, focused on input validation, classification confidence, and evidence around edge cases.",
     tags: ["Exploratory QA", "Data validation", "Acceptance"],
-    link: "https://github.com/MeatLens-Freshness-Inspector/botchabuster",
+    link: "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
     liveDemo: "https://meatlensv2.netlify.app",
     accent: "sage",
   },
@@ -32,7 +32,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     description:
       "A structured pass through a legacy PHP application that is refactored by me, focused on critical transaction paths, data integrity, reproducible defects, and safe regression coverage.",
     tags: ["Manual QA", "Postman", "Bug reports"],
-    link: "https://github.com/Thalanas110/MyLightDrugstore",
+    link: "https://github.com/adriaanamd/MyLightDrugstore",
     accent: "sand",
   },
 ]

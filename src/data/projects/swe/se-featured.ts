@@ -11,7 +11,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
     description:
       "A modern exam management system with real-time monitoring, anti-cheat countermeasures, and centralized student performance analytics.",
     tags: ["TypeScript", "Full stack", "Real-time"],
-    link: "https://github.com/Thalanas110/ExamHub",
+    link: "https://github.com/adriaanamd/ExamHub",
     accent: "wine",
   },
   {
@@ -21,7 +21,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
     description:
       "A freshness inspection platform designed to help users scan and assess meat. An active thesis project joining a practical interface with classification workflows.",
     tags: ["TypeScript", "React", "Computer vision"],
-    link: "https://github.com/MeatLens-Freshness-Inspector/botchabuster",
+    link: "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
     liveDemo: "https://meatlensv2.netlify.app",
     accent: "sage",
   },
@@ -32,7 +32,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
     description:
       "A pharmacy inventory and sales system covering medicine cataloging, stock movement, transaction history, and staff workflows.",
     tags: ["PHP", "Inventory", "Full stack"],
-    link: "https://github.com/Thalanas110/MyLightDrugstore",
+    link: "https://github.com/adriaanamd/MyLightDrugstore",
     accent: "sand",
   },
 ]

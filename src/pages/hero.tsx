@@ -40,7 +40,9 @@ export default function Hero() {
           </div>
           <div className="hero-footnote">
             <span>Based in Olongapo City, Philippines</span>
-            <span>Available for meaningful work</span>
+            <span className="availability-status">
+              Open for Junior QA positions
+            </span>
           </div>
         </div>
 

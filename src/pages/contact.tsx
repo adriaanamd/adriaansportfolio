@@ -19,7 +19,7 @@ export default function Contact() {
         </a>
         <div className="social-links">
           <a
-            href="https://github.com/Thalanas110"
+            href="https://github.com/adriaanamd"
             target="_blank"
             rel="noreferrer"
           >

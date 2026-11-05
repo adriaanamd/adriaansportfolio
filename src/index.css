@@ -168,12 +168,31 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
   border-top: 1px solid var(--line);
   color: var(--muted);
   display: flex;
-  font-size: 0.71rem;
-  gap: 30px;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+  font-weight: 500;
+  gap: 24px;
   margin-top: 42px;
-  padding-top: 18px;
+  padding-top: 22px;
 }
-.hero-footnote span::before { color: var(--sage); content: "●"; font-size: 0.5rem; margin-right: 8px; vertical-align: middle; }
+.hero-footnote span {
+  align-items: center;
+  display: inline-flex;
+}
+.hero-footnote span::before {
+  color: var(--sage);
+  content: "●";
+  font-size: 0.65rem;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.hero-footnote .availability-status {
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+.hero-footnote .availability-status::before {
+  color: #16a34a;
+}
 
 .hero-art { min-height: 520px; position: relative; }
 .portrait-card {
@@ -748,7 +767,7 @@ footer span { color: rgba(255,255,255,.55); }
   .nav-cta { padding: 9px 14px; }
   .hero { display: block; min-height: auto; padding: 130px 22px 75px; }
   h1 { font-size: clamp(3.4rem, 16vw, 5rem); }
-  .hero-footnote { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .hero-footnote { align-items: flex-start; flex-direction: column; gap: 10px; }
   .hero-art { margin-top: 55px; min-height: 480px; }
   .portrait-window { height: 340px; }
   .note-one { left: -4px; }
