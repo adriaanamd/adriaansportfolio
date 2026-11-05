@@ -51,44 +51,93 @@ export function ArchivePage({
           <strong>{String(projects.length).padStart(2, "0")} entries</strong>
         </div>
         <div className="dump-grid">
-          {projects.map(([title, detail, link, liveDemo], index) => (
-            <article className="dump-card glass" key={title}>
-              <div className="dump-card-top">
-                <span>0{index + 1}</span>
-                <ExternalIcon />
-              </div>
-              <div
-                className={`dump-monogram ${
-                  index % 3 === 0 ? "wine" : index % 3 === 1 ? "sage" : "sand"
-                }`}
-              >
-                {title.slice(0, 2).toUpperCase()}
-              </div>
-              <p>{detail}</p>
-              <h2>{title}</h2>
-              <div className="dump-card-links">
-                {liveDemo && (
+          {projects.map(
+            (
+              [
+                title,
+                detail,
+                link,
+                liveDemo,
+                image,
+                description,
+                tags,
+                paperLink,
+              ],
+              index,
+            ) => (
+              <article className="dump-card glass" key={title}>
+                <div className="dump-card-top">
+                  <span>0{index + 1}</span>
+                  <ExternalIcon />
+                </div>
+                {image ? (
+                  <div className="dump-image-wrapper">
+                    <img
+                      src={image}
+                      alt={`${title} preview`}
+                      className="dump-card-image"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className={`dump-monogram ${
+                      index % 3 === 0
+                        ? "wine"
+                        : index % 3 === 1
+                          ? "sage"
+                          : "sand"
+                    }`}
+                  >
+                    {title.slice(0, 2).toUpperCase()}
+                  </div>
+                )}
+                <p>{detail}</p>
+                <h2>{title}</h2>
+                {description && (
+                  <p className="dump-description">{description}</p>
+                )}
+                {tags && (
+                  <div className="tags">
+                    {tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                )}
+                <div className="dump-card-links">
+                  {liveDemo && (
+                    <a
+                      href={liveDemo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="dump-open live-demo"
+                    >
+                      <span className="live-demo-dot" aria-hidden="true" />
+                      Live demo <ExternalIcon />
+                    </a>
+                  )}
+                  {paperLink && (
+                    <a
+                      href={paperLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="dump-open paper-link"
+                    >
+                      Research paper <ExternalIcon />
+                    </a>
+                  )}
                   <a
-                    href={liveDemo}
+                    href={link}
                     target="_blank"
                     rel="noreferrer"
-                    className="dump-open live-demo"
+                    className="dump-open"
                   >
-                    <span className="live-demo-dot" aria-hidden="true" />
-                    Live demo <ExternalIcon />
+                    {liveDemo ? "View code" : "Open project"} <ArrowIcon />
                   </a>
-                )}
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="dump-open"
-                >
-                  {liveDemo ? "View code" : "Open project"} <ArrowIcon />
-                </a>
-              </div>
-            </article>
-          ))}
+                </div>
+              </article>
+            ),
+          )}
         </div>
       </section>
 

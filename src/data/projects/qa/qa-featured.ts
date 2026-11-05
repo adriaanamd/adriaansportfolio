@@ -23,6 +23,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     tags: ["Exploratory QA", "Data validation", "Acceptance"],
     link: "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
     liveDemo: "https://meatlensv2.netlify.app",
+    paperLink: "/meatlens-research-paper.pdf",
     accent: "sage",
   },
   {

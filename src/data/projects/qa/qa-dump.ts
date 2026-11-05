@@ -22,6 +22,10 @@ export const qaArchive: ArchiveProject[] = [
     "Data validation · exploratory testing",
     "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
     "https://meatlensv2.netlify.app",
+    undefined,
+    undefined,
+    undefined,
+    "/meatlens-research-paper.pdf",
   ],
   [
     "New PDC 2 — concurrency checks",

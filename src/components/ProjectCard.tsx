@@ -33,6 +33,16 @@ export default function ProjectCard({
               Live demo <ExternalIcon />
             </a>
           )}
+          {project.paperLink && (
+            <a
+              href={project.paperLink}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link paper-link"
+            >
+              Research paper <ExternalIcon />
+            </a>
+          )}
           <a
             href={project.link}
             target="_blank"
@@ -41,6 +51,17 @@ export default function ProjectCard({
           >
             {project.liveDemo ? "View code" : "View project"} <ExternalIcon />
           </a>
+          {project.extraLinks?.map((extra) => (
+            <a
+              key={extra.url}
+              href={extra.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              {extra.label} <ExternalIcon />
+            </a>
+          ))}
         </div>
       </div>
     </article>

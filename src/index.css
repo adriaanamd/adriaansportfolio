@@ -619,6 +619,20 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
 .dump-monogram.wine { background: var(--wine-soft); color: var(--wine); }
 .dump-monogram.sage { background: var(--sage-soft); color: var(--sage-dark); }
 .dump-monogram.sand { background: var(--sand-soft); color: #8a6036; }
+.dump-image-wrapper {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  height: 160px;
+  margin: 22px 0 20px;
+  overflow: hidden;
+  width: 100%;
+}
+.dump-card-image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
 .dump-card > p {
   color: var(--muted);
   font-size: .7rem;
@@ -629,7 +643,18 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
 .dump-card h2 {
   color: var(--wine);
   font-size: 1.75rem;
-  margin: 0 0 28px;
+  margin: 0 0 16px;
+}
+.dump-card .dump-description {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: normal;
+  line-height: 1.55;
+  margin: 0 0 20px;
+  text-transform: none;
+}
+.dump-card .tags {
+  margin-bottom: 24px;
 }
 .dump-open {
   align-items: center;
