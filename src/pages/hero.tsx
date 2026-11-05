@@ -17,10 +17,9 @@ export default function Hero() {
             <em> M. Dimate</em>
           </h1>
           <p className="hero-intro">
-            A quality assurance engineer and SDET dedicated to breaking down
-            edge cases, automating robust test suites, and safeguarding
-            production reliability using Playwright, Cypress, Vitest, Node.js,
-            and React.
+            A quality assurance engineer and SDET building thoughtful test
+            suites and reliable systems that hold steady through turbulence
+            using Playwright, Cypress, Vitest, Node.js, and React.
           </p>
           <div className="hero-actions">
             <a href="#work" className="button primary">
