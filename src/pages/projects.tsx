@@ -16,36 +16,22 @@ export default function Projects() {
   const [activeCaseSlug, setActiveCaseSlug] = useState<string | null>(null)
 
   useEffect(() => {
-    const syncFromUrl = () => {
-      const params = new URLSearchParams(window.location.search)
-      const caseParam = params.get("case")
-      if (
-        caseParam &&
-        allFeaturedProjects.some((project) => project.slug === caseParam)
-      ) {
-        setActiveCaseSlug(caseParam)
-      } else {
-        setActiveCaseSlug(null)
-      }
+    const params = new URLSearchParams(window.location.search)
+    const caseParam = params.get("case")
+    if (
+      caseParam &&
+      allFeaturedProjects.some((project) => project.slug === caseParam)
+    ) {
+      setActiveCaseSlug(caseParam)
     }
-
-    syncFromUrl()
-    window.addEventListener("popstate", syncFromUrl)
-    return () => window.removeEventListener("popstate", syncFromUrl)
   }, [allFeaturedProjects])
 
   const handleOpenCaseStudy = useCallback((slug: string) => {
     setActiveCaseSlug(slug)
-    const url = new URL(window.location.href)
-    url.searchParams.set("case", slug)
-    window.history.pushState({}, "", url.toString())
   }, [])
 
   const handleCloseCaseStudy = useCallback(() => {
     setActiveCaseSlug(null)
-    const url = new URL(window.location.href)
-    url.searchParams.delete("case")
-    window.history.pushState({}, "", url.toString())
   }, [])
 
   const activeProject = useMemo(

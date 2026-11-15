@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 
 import type { FeaturedProject } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
@@ -17,15 +18,42 @@ export default function CaseStudyDrawer({
 }) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
   const closeButtonRef = useRef<HTMLButtonElement | null>(null)
+  const wasOpenRef = useRef(false)
   const [copied, setCopied] = useState(false)
+  const isOpen = Boolean(project)
 
   useEffect(() => {
-    if (!project) {
+    if (!isOpen) {
       return
     }
 
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = "hidden"
+    const html = document.documentElement
+    const body = document.body
+    const scrollY = window.scrollY
+    const prevHtmlOverflowY = html.style.overflowY
+    const prevBodyPaddingRight = body.style.paddingRight
+
+    const scrollbarWidth = window.innerWidth - html.clientWidth
+    html.style.overflowY = "hidden"
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`
+    }
+
+    closeButtonRef.current?.focus({ preventScroll: true })
+
+    return () => {
+      html.style.overflowY = prevHtmlOverflowY
+      body.style.paddingRight = prevBodyPaddingRight
+      if (window.scrollY !== scrollY) {
+        window.scrollTo({ top: scrollY, behavior: "instant" })
+      }
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -34,22 +62,28 @@ export default function CaseStudyDrawer({
     }
 
     window.addEventListener("keydown", handleKeyDown)
-    closeButtonRef.current?.focus()
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [project, onClose])
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isOpen, onClose])
 
   useEffect(() => {
-    if (project && scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTo({ top: 0, behavior: "smooth" })
+    if (!project) {
+      wasOpenRef.current = false
+      return
     }
+
+    if (scrollContainerRef.current) {
+      if (wasOpenRef.current) {
+        scrollContainerRef.current.scrollTo({ top: 0, behavior: "smooth" })
+      } else {
+        scrollContainerRef.current.scrollTop = 0
+      }
+    }
+
+    wasOpenRef.current = true
     setCopied(false)
   }, [project])
 
-  if (!project) {
+  if (!project || typeof document === "undefined") {
     return null
   }
 
@@ -68,7 +102,9 @@ export default function CaseStudyDrawer({
 
   const handleCopyLink = async () => {
     try {
-      await navigator.clipboard.writeText(window.location.href)
+      const shareUrl = new URL(window.location.href)
+      shareUrl.searchParams.set("case", project.slug)
+      await navigator.clipboard.writeText(shareUrl.toString())
       setCopied(true)
       window.setTimeout(() => setCopied(false), 2000)
     } catch {
@@ -76,7 +112,7 @@ export default function CaseStudyDrawer({
     }
   }
 
-  return (
+  return createPortal(
     <div
       className="case-modal-backdrop"
       role="dialog"
@@ -88,10 +124,7 @@ export default function CaseStudyDrawer({
         }
       }}
     >
-      <aside
-        className={`case-modal-drawer glass accent-${project.accent}`}
-        ref={scrollContainerRef}
-      >
+      <aside className={`case-modal-drawer glass accent-${project.accent}`}>
         <header className="case-modal-topbar">
           <div className="case-modal-badges">
             <span className={`case-track-pill ${project.accent}`}>
@@ -125,7 +158,7 @@ export default function CaseStudyDrawer({
           </div>
         </header>
 
-        <div className="case-modal-body">
+        <div className="case-modal-body" ref={scrollContainerRef}>
           <div className="case-hero">
             <p className="eyebrow">{project.eyebrow}</p>
             <h2 id="case-study-title">{project.title}</h2>
@@ -272,6 +305,7 @@ export default function CaseStudyDrawer({
           </nav>
         </div>
       </aside>
-    </div>
+    </div>,
+    document.body,
   )
 }
