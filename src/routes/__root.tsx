@@ -6,6 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router"
 import { AppLoadingGate } from "../components/LoadingScreen"
+import "../index.css"
 import appCss from "../index.css?url"
 import { NotFound } from "../pages/not-found"
 

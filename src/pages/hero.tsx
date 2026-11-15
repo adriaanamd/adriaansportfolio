@@ -40,7 +40,7 @@ export default function Hero() {
           <div className="hero-footnote">
             <span>Based in Olongapo City, Philippines</span>
             <span className="availability-status">
-              Open for Junior QA / SDET Roles · Full-Time & OJT
+              Open for Junior QA / SDET Roles, Full-Time & OJT
             </span>
           </div>
         </div>

@@ -38,7 +38,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
     extraLinks: [
       {
         label: "Collaborator repo",
-        url: "https://github.com/dmjm99125/mathventure",
+        url: "https://github.com/dmjm99125/mathventurev2",
       },
     ],
     accent: "sand",
