@@ -175,7 +175,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
   },
   {
     slug: "mathventure-swe",
-    title: "MathVenture",
+    title: "Project MathVenture",
     image: mathVentureImage,
     eyebrow: "Software Engineering · Educational Technology",
     description:
