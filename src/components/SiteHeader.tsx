@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "@tanstack/react-router"
 
 import ArrowIcon from "./ArrowIcon"
 
@@ -8,6 +9,17 @@ const links = [
   { href: "#experience", label: "Experience" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
+]
+
+const archiveLinks: Array<{
+  key: string
+  label: string
+  hash?: string
+  search?: { page: string }
+}> = [
+  { key: "portfolio", label: "Portfolio" },
+  { key: "featured-work", label: "Featured work", hash: "work" },
+  { key: "archive", label: "Archive", search: { page: "archive" } },
 ]
 
 export default function SiteHeader({ archive = false }: { archive?: boolean }) {
@@ -36,34 +48,48 @@ export default function SiteHeader({ archive = false }: { archive?: boolean }) {
 
   const closeMenu = () => setMenuOpen(false)
 
-  const navLinks = archive
-    ? [
-        { href: "./", label: "Portfolio" },
-        { href: "./#work", label: "Featured work" },
-        { href: "?page=archive", label: "Archive" },
-      ]
-    : links
-
   const navLabel = archive ? "Project archive navigation" : "Primary navigation"
-  const ctaHref = archive ? "./#contact" : "#contact"
 
   return (
     <header className={`site-header glass${menuOpen ? " is-open" : ""}`}>
       <div className="site-header-bar">
-        <a href={archive ? "./" : "#top"} className="brand" onClick={closeMenu}>
-          Adriaan’s Journal
-        </a>
+        {archive ? (
+          <Link to="/" className="brand" onClick={closeMenu}>
+            Adriaan’s Journal
+          </Link>
+        ) : (
+          <a href="#top" className="brand" onClick={closeMenu}>
+            Adriaan’s Journal
+          </a>
+        )}
         <nav aria-label={navLabel} className="desktop-nav">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
+          {archive
+            ? archiveLinks.map((link) => (
+                <Link
+                  key={link.key}
+                  to="/"
+                  hash={link.hash}
+                  search={link.search}
+                >
+                  {link.label}
+                </Link>
+              ))
+            : links.map((link) => (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
         </nav>
         <div className="site-header-actions">
-          <a href={ctaHref} className="nav-cta" onClick={closeMenu}>
-            Let’s talk <ArrowIcon />
-          </a>
+          {archive ? (
+            <Link to="/" hash="contact" className="nav-cta" onClick={closeMenu}>
+              Let’s talk <ArrowIcon />
+            </Link>
+          ) : (
+            <a href="#contact" className="nav-cta" onClick={closeMenu}>
+              Let’s talk <ArrowIcon />
+            </a>
+          )}
           <button
             type="button"
             className="nav-toggle"
@@ -89,16 +115,40 @@ export default function SiteHeader({ archive = false }: { archive?: boolean }) {
         className={`mobile-nav${menuOpen ? " is-open" : ""}`}
       >
         <div className="mobile-nav-links">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={closeMenu}>
-              {link.label}
-              <ArrowIcon />
-            </a>
-          ))}
+          {archive
+            ? archiveLinks.map((link) => (
+                <Link
+                  key={link.key}
+                  to="/"
+                  hash={link.hash}
+                  search={link.search}
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                  <ArrowIcon />
+                </Link>
+              ))
+            : links.map((link) => (
+                <a key={link.href} href={link.href} onClick={closeMenu}>
+                  {link.label}
+                  <ArrowIcon />
+                </a>
+              ))}
         </div>
-        <a href={ctaHref} className="mobile-nav-cta" onClick={closeMenu}>
-          Let’s talk <ArrowIcon />
-        </a>
+        {archive ? (
+          <Link
+            to="/"
+            hash="contact"
+            className="mobile-nav-cta"
+            onClick={closeMenu}
+          >
+            Let’s talk <ArrowIcon />
+          </Link>
+        ) : (
+          <a href="#contact" className="mobile-nav-cta" onClick={closeMenu}>
+            Let’s talk <ArrowIcon />
+          </a>
+        )}
       </nav>
     </header>
   )

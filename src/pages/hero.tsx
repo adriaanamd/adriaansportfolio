@@ -70,7 +70,7 @@ export default function Hero() {
             using{" "}
             <strong>
               Playwright, Cypress, Vitest, Node.js, React, Tanstack Start,
-              ExpressJS, and PostgreSQL.
+              ExpressJS, and PostgreSQL
             </strong>
             .
           </p>

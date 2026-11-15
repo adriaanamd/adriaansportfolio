@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router"
+
 import type { ArchiveProject } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
 import ExternalIcon from "./ExternalIcon"
@@ -10,9 +12,9 @@ export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
       <SiteHeader archive />
 
       <ScrollFade as="section" className="dump-hero">
-        <a href="./#work" className="back-link">
+        <Link to="/" hash="work" className="back-link">
           ← Back to selected work
-        </a>
+        </Link>
         <p className="eyebrow">
           Selected archive · Additional significant work
         </p>
@@ -94,9 +96,9 @@ export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
 
       <ScrollFade as="section" className="dump-footer">
         <p>Looking for the six primary case studies?</p>
-        <a href="./#work" className="button cream-button">
+        <Link to="/" hash="work" className="button cream-button">
           Back to featured work <ArrowIcon />
-        </a>
+        </Link>
       </ScrollFade>
     </main>
   )

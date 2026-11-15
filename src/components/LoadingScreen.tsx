@@ -70,6 +70,7 @@ export const THINKING_STEPS: ThinkingStep[] = [
 ]
 
 const TOTAL_THINKING_MS = 2400
+let hasCompletedInitialLoad = false
 
 function StepGlyph({ icon }: { icon: StepIcon }) {
   switch (icon) {
@@ -293,12 +294,17 @@ export function LoadingScreen({
 }
 
 export function AppLoadingGate() {
-  const [stage, setStage] = useState<"loading" | "exiting" | "hidden">(
-    "loading",
+  const [stage, setStage] = useState<"loading" | "exiting" | "hidden">(() =>
+    hasCompletedInitialLoad ? "hidden" : "loading",
   )
   const [elapsedMs, setElapsedMs] = useState(0)
 
   useEffect(() => {
+    if (hasCompletedInitialLoad) {
+      setStage("hidden")
+      return
+    }
+
     let isCancelled = false
     const minDisplayMs = TOTAL_THINKING_MS
     const fadeOutMs = 360
@@ -322,6 +328,7 @@ export function AppLoadingGate() {
 
       window.setTimeout(() => {
         if (isCancelled) return
+        hasCompletedInitialLoad = true
         setElapsedMs(TOTAL_THINKING_MS)
         setStage("exiting")
         window.setTimeout(() => {

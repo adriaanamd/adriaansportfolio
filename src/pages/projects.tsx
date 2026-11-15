@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
+import { Link } from "@tanstack/react-router"
 
 import ArrowIcon from "../components/ArrowIcon"
 import CaseStudyDrawer from "../components/CaseStudyDrawer"
@@ -100,9 +101,9 @@ export default function Projects() {
             Explore additional significant builds and live QA engagements—from
             cryptographic PDF signing to multiplayer beta testing.
           </p>
-          <a href="?page=archive" className="button primary">
+          <Link to="/" search={{ page: "archive" }} className="button primary">
             View project archive <ArrowIcon />
-          </a>
+          </Link>
         </div>
       </ScrollFade>
 

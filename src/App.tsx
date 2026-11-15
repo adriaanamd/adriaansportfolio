@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import { useLocation } from "@tanstack/react-router"
 
 import ArchivePage from "./components/ArchivePage"
@@ -11,8 +12,27 @@ import Stack from "./pages/stack"
 import WorkExperience from "./pages/work-experience"
 
 export default function App() {
-  const { searchStr } = useLocation()
+  const { searchStr, hash } = useLocation()
   const page = new URLSearchParams(searchStr).get("page")
+  const prevPageRef = useRef(page)
+
+  useEffect(() => {
+    if (prevPageRef.current === page) {
+      return
+    }
+    prevPageRef.current = page
+
+    const targetId = hash.replace(/^#/, "")
+    if (page !== "archive" && targetId) {
+      const targetElement = document.getElementById(targetId)
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "instant" })
+        return
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }, [page, hash])
 
   if (page === "archive") {
     return <ArchivePage projects={significantArchiveProjects} />
