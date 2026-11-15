@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router"
+import { AppLoadingGate } from "../components/LoadingScreen"
 import appCss from "../index.css?url"
 import { NotFound } from "../pages/not-found"
 
@@ -26,6 +27,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
+      <AppLoadingGate />
       <Outlet />
     </RootDocument>
   )

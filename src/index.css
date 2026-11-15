@@ -47,6 +47,90 @@ svg {
   backdrop-filter: blur(18px);
 }
 
+.loading-screen {
+  align-items: center;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(229, 234, 220, 0.55), transparent 32%),
+    radial-gradient(circle at 82% 76%, rgba(241, 225, 226, 0.5), transparent 32%),
+    var(--cream);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 1;
+  padding: 24px;
+  position: fixed;
+  transition: opacity 320ms ease, visibility 320ms ease;
+  visibility: visible;
+  z-index: 100;
+}
+.loading-screen.is-exiting {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.loading-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+.loading-brand {
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.loading-bar-track {
+  background: var(--line);
+  border-radius: 999px;
+  height: 3px;
+  overflow: hidden;
+  position: relative;
+  width: 170px;
+}
+.loading-bar-fill {
+  animation: loading-slide 1.15s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  background: var(--wine);
+  border-radius: 999px;
+  height: 100%;
+  width: 48%;
+}
+.loading-bar-fill.is-complete {
+  animation: none;
+  transition: width 220ms ease, transform 220ms ease;
+  transform: translateX(0);
+  width: 100%;
+}
+.loading-status {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.68rem;
+  font-weight: 600;
+  gap: 8px;
+  letter-spacing: 0.17em;
+  margin: 0;
+  text-transform: uppercase;
+}
+.loading-dot {
+  animation: loading-pulse 1.2s ease-in-out infinite;
+  background: var(--sage);
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+@keyframes loading-slide {
+  0% { transform: translateX(-105%); }
+  50% { transform: translateX(55%); }
+  100% { transform: translateX(215%); }
+}
+@keyframes loading-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
 .site-header {
   align-items: center;
   border-radius: 999px;
