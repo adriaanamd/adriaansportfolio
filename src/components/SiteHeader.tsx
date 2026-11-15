@@ -2,6 +2,14 @@ import { useEffect, useState } from "react"
 
 import ArrowIcon from "./ArrowIcon"
 
+const links = [
+  { href: "#work", label: "Work" },
+  { href: "#stack", label: "Stack" },
+  { href: "#experience", label: "Experience" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+]
+
 export default function SiteHeader({ archive = false }: { archive?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -28,19 +36,13 @@ export default function SiteHeader({ archive = false }: { archive?: boolean }) {
 
   const closeMenu = () => setMenuOpen(false)
 
-  const links = archive
+  const navLinks = archive
     ? [
         { href: "./", label: "Portfolio" },
-        { href: "?page=qa-project-dump", label: "QA dump" },
-        { href: "?page=engineering-project-dump", label: "SE dump" },
+        { href: "./#work", label: "Featured work" },
+        { href: "?page=archive", label: "Archive" },
       ]
-    : [
-        { href: "#work", label: "Work" },
-        { href: "#stack", label: "Stack" },
-        { href: "#experience", label: "Experience" },
-        { href: "#about", label: "About" },
-        { href: "#contact", label: "Contact" },
-      ]
+    : links
 
   const navLabel = archive ? "Project archive navigation" : "Primary navigation"
   const ctaHref = archive ? "./#contact" : "#contact"
@@ -52,7 +54,7 @@ export default function SiteHeader({ archive = false }: { archive?: boolean }) {
           Adriaan’s Journal
         </a>
         <nav aria-label={navLabel} className="desktop-nav">
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <a key={link.href} href={link.href}>
               {link.label}
             </a>
@@ -87,7 +89,7 @@ export default function SiteHeader({ archive = false }: { archive?: boolean }) {
         className={`mobile-nav${menuOpen ? " is-open" : ""}`}
       >
         <div className="mobile-nav-links">
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={closeMenu}>
               {link.label}
               <ArrowIcon />

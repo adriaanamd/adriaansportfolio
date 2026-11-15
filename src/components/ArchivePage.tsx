@@ -4,15 +4,7 @@ import ExternalIcon from "./ExternalIcon"
 import ScrollFade from "./ScrollFade"
 import SiteHeader from "./SiteHeader"
 
-export function ArchivePage({
-  type,
-  projects,
-}: {
-  type: "qa" | "engineering"
-  projects: ArchiveProject[]
-}) {
-  const isQa = type === "qa"
-
+export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
   return (
     <main className="dump-page">
       <SiteHeader archive />
@@ -22,130 +14,88 @@ export function ArchivePage({
           ← Back to selected work
         </a>
         <p className="eyebrow">
-          {isQa ? "Quality assurance" : "Software engineering"} · Complete
-          archive
+          Selected archive · Additional significant work
         </p>
-        <h1>
-          {isQa ? "The QA project dump." : "The engineering project dump."}
-        </h1>
+        <h1>More significant builds & QA work.</h1>
         <p>
-          {isQa
-            ? "Every testing engagement, exploratory pass, automation effort, and quality-focused case study—featured or otherwise."
-            : "Every application, experiment, academic build, and shipped product—featured or otherwise."}
+          Beyond the six featured case studies, these projects represent
+          additional production builds, cryptographic and real-time systems, and
+          live multiplayer QA engagements.
         </p>
-        <div className="dump-switcher">
-          <a className={isQa ? "active" : ""} href="?page=qa-project-dump">
-            QA project dump
-          </a>
-          <a
-            className={!isQa ? "active" : ""}
-            href="?page=engineering-project-dump"
-          >
-            SE project dump
-          </a>
-        </div>
       </ScrollFade>
 
       <ScrollFade as="section" className="dump-list-section">
         <div className="dump-count">
-          <span>Archive index</span>
-          <strong>{String(projects.length).padStart(2, "0")} entries</strong>
+          <span>Curated archive</span>
+          <strong>
+            {String(projects.length).padStart(2, "0")} significant projects
+          </strong>
         </div>
         <div className="dump-grid">
-          {projects.map(
-            (
-              [
-                title,
-                detail,
-                link,
-                liveDemo,
-                image,
-                description,
-                tags,
-                paperLink,
-              ],
-              index,
-            ) => (
-              <article className="dump-card glass" key={title}>
-                <div className="dump-card-top">
-                  <span>0{index + 1}</span>
-                  <ExternalIcon />
-                </div>
-                {image ? (
-                  <div className="dump-image-wrapper">
-                    <img
-                      src={image}
-                      alt={`${title} preview`}
-                      className="dump-card-image"
-                      loading="lazy"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className={`dump-monogram ${
-                      index % 3 === 0
-                        ? "wine"
-                        : index % 3 === 1
-                          ? "sage"
-                          : "sand"
-                    }`}
-                  >
-                    {title.slice(0, 2).toUpperCase()}
-                  </div>
-                )}
-                <p>{detail}</p>
-                <h2>{title}</h2>
-                {description && (
-                  <p className="dump-description">{description}</p>
-                )}
-                {tags && (
-                  <div className="tags">
-                    {tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                )}
-                <div className="dump-card-links">
-                  {liveDemo && (
-                    <a
-                      href={liveDemo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="dump-open live-demo"
-                    >
-                      <span className="live-demo-dot" aria-hidden="true" />
-                      Live demo <ExternalIcon />
-                    </a>
-                  )}
-                  {paperLink && (
-                    <a
-                      href={paperLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="dump-open paper-link"
-                    >
-                      Research paper <ExternalIcon />
-                    </a>
-                  )}
+          {projects.map((project, index) => (
+            <article className="dump-card glass" key={project.slug}>
+              <div className="dump-card-top">
+                <span className="dump-card-index">
+                  0{index + 1} · {project.role}
+                </span>
+                <span className={`case-track-pill ${project.accent}`}>
+                  {project.title}
+                </span>
+              </div>
+
+              <div className={`dump-monogram ${project.accent}`}>
+                {project.title.slice(0, 2)}
+              </div>
+
+              <p className="dump-eyebrow">{project.eyebrow}</p>
+              <h2>{project.title}</h2>
+              <p className="dump-description">{project.description}</p>
+
+              <ul className="dump-highlights">
+                {project.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <div className="tags">
+                {project.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+
+              <div className="dump-card-links">
+                {project.liveUrl && (
                   <a
-                    href={link}
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="dump-open live-demo"
+                  >
+                    <span className="live-demo-dot" aria-hidden="true" />
+                    {project.repoUrl ? "Live demo" : "Visit live site"}{" "}
+                    <ExternalIcon />
+                  </a>
+                )}
+                {project.repoUrl && (
+                  <a
+                    href={project.repoUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="dump-open"
                   >
-                    {liveDemo ? "View code" : "Open project"} <ArrowIcon />
+                    View repository <ArrowIcon />
                   </a>
-                </div>
-              </article>
-            ),
-          )}
+                )}
+              </div>
+            </article>
+          ))}
         </div>
       </ScrollFade>
 
       <ScrollFade as="section" className="dump-footer">
-        <p>Looking for the highlights?</p>
+        <p>Looking for the six primary case studies?</p>
         <a href="./#work" className="button cream-button">
-          View selected work <ArrowIcon />
+          Back to featured work <ArrowIcon />
         </a>
       </ScrollFade>
     </main>

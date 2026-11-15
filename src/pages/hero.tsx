@@ -68,8 +68,11 @@ export default function Hero() {
             A quality assurance engineer and SDET building thoughtful test
             suites and reliable systems that hold steady through turbulence
             using{" "}
-            <strong>Playwright, Cypress, Vitest, Node.js, React, Tanstack Start,
-              ExpressJS, and PostgreSQL.</strong>.
+            <strong>
+              Playwright, Cypress, Vitest, Node.js, React, Tanstack Start,
+              ExpressJS, and PostgreSQL.
+            </strong>
+            .
           </p>
 
           <div className="hero-actions">

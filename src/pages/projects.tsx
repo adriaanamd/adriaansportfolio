@@ -68,15 +68,6 @@ export default function Projects() {
             />
           ))}
         </div>
-        <div className="dump-cta">
-          <p>
-            Looking for every QA engagement, including these featured case
-            studies?
-          </p>
-          <a href="?page=qa-project-dump" className="button primary">
-            Open the QA project dump <ArrowIcon />
-          </a>
-        </div>
       </ScrollFade>
 
       <ScrollFade>
@@ -106,11 +97,11 @@ export default function Projects() {
         </div>
         <div className="dump-cta">
           <p>
-            Browse every software build, including all three projects featured
-            above.
+            Explore additional significant builds and live QA engagements—from
+            cryptographic PDF signing to multiplayer beta testing.
           </p>
-          <a href="?page=engineering-project-dump" className="button primary">
-            Open the SE project dump <ArrowIcon />
+          <a href="?page=archive" className="button primary">
+            View project archive <ArrowIcon />
           </a>
         </div>
       </ScrollFade>

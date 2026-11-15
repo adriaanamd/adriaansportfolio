@@ -43,4 +43,15 @@ export type FeaturedProject = {
   caseStudy: CaseStudy
 }
 
-export type ArchiveProject = readonly [title: string, detail: string, link: string, liveDemo?: string, image?: string, description?: string, tags?: readonly string[], paperLink?: string]
+export type ArchiveProject = {
+  slug: string
+  title: string
+  eyebrow: string
+  role: string
+  description: string
+  highlights: string[]
+  tags: string[]
+  accent: ProjectAccent
+  repoUrl?: string
+  liveUrl?: string
+}
