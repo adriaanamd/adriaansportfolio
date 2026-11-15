@@ -750,13 +750,54 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
   height: 400px;
   justify-content: center;
   overflow: hidden;
+  padding: 0;
   position: relative;
+  width: 100%;
+}
+.portrait-trigger {
+  cursor: pointer;
+  outline: none;
+}
+.portrait-trigger:focus-visible {
+  box-shadow: 0 0 0 3px var(--wine);
 }
 .portrait-image {
   height: 100%;
   object-fit: cover;
   object-position: center 24%;
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
   width: 100%;
+}
+.portrait-trigger:hover .portrait-image,
+.portrait-trigger:focus-visible .portrait-image {
+  transform: scale(1.035);
+}
+.portrait-zoom-pill {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 253, 248, 0.92);
+  border: 1px solid rgba(122, 38, 56, 0.18);
+  border-radius: 999px;
+  bottom: 14px;
+  box-shadow: 0 10px 24px rgba(41, 41, 37, 0.16);
+  color: var(--wine);
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 600;
+  gap: 6px;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  padding: 6px 13px;
+  pointer-events: none;
+  position: absolute;
+  right: 14px;
+  transform: translateY(6px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.portrait-trigger:hover .portrait-zoom-pill,
+.portrait-trigger:focus-visible .portrait-zoom-pill {
+  opacity: 1;
+  transform: translateY(0);
 }
 .portrait-caption {
   align-items: flex-end;
@@ -792,6 +833,268 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
   font-size: 0.8rem;
   padding: 4px 11px;
   transform: rotate(-2deg);
+}
+
+.portrait-modal-backdrop {
+  align-items: center;
+  animation: case-backdrop-in 220ms ease forwards;
+  backdrop-filter: blur(12px);
+  background: rgba(34, 28, 25, 0.56);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overscroll-behavior: contain;
+  padding: 20px;
+  position: fixed;
+  z-index: 95;
+}
+.portrait-modal-frame {
+  animation: portrait-modal-in 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(229, 234, 220, 0.55), transparent 32%),
+    radial-gradient(circle at 88% 82%, rgba(241, 225, 226, 0.48), transparent 30%),
+    linear-gradient(160deg, var(--paper), var(--cream));
+  border: 1px solid rgba(255, 255, 255, 0.94);
+  border-radius: 32px;
+  box-shadow:
+    0 36px 96px rgba(34, 20, 16, 0.34),
+    inset 0 0 0 1px rgba(122, 38, 56, 0.08);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 40px);
+  max-width: 920px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.portrait-corner {
+  border-color: rgba(122, 38, 56, 0.28);
+  border-style: solid;
+  height: 18px;
+  pointer-events: none;
+  position: absolute;
+  width: 18px;
+  z-index: 6;
+}
+.corner-tl {
+  border-radius: 6px 0 0 0;
+  border-width: 2px 0 0 2px;
+  left: 14px;
+  top: 14px;
+}
+.corner-tr {
+  border-radius: 0 6px 0 0;
+  border-width: 2px 2px 0 0;
+  right: 14px;
+  top: 14px;
+}
+.corner-bl {
+  border-radius: 0 0 0 6px;
+  border-width: 0 0 2px 2px;
+  bottom: 14px;
+  left: 14px;
+}
+.corner-br {
+  border-radius: 0 0 6px 0;
+  border-width: 0 2px 2px 0;
+  bottom: 14px;
+  right: 14px;
+}
+.portrait-modal-topbar {
+  align-items: center;
+  background: rgba(255, 253, 248, 0.88);
+  border-bottom: 1px dashed rgba(122, 38, 56, 0.18);
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 18px 28px;
+}
+.portrait-modal-stamps {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.portrait-archive-pill {
+  background: var(--wine);
+  border-radius: 999px;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 6px 13px;
+  text-transform: uppercase;
+}
+.portrait-archive-code {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.portrait-modal-body {
+  align-items: center;
+  display: grid;
+  flex: 1;
+  gap: 34px;
+  grid-template-columns: 0.94fr 1.06fr;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 32px 34px 36px;
+}
+.portrait-modal-showcase {
+  position: relative;
+}
+.portrait-showcase-mat {
+  background: var(--paper);
+  border: 1px solid rgba(122, 38, 56, 0.16);
+  border-radius: 24px;
+  box-shadow: 0 24px 55px rgba(58, 38, 30, 0.14);
+  padding: 14px;
+  position: relative;
+}
+.portrait-plate-tag {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 253, 248, 0.9);
+  border: 1px solid rgba(70, 62, 49, 0.14);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.62rem;
+  font-weight: 700;
+  left: 26px;
+  letter-spacing: 0.14em;
+  padding: 5px 11px;
+  position: absolute;
+  top: 26px;
+  z-index: 2;
+}
+.portrait-modal-image {
+  border-radius: 16px;
+  display: block;
+  height: 440px;
+  object-fit: cover;
+  object-position: center 22%;
+  width: 100%;
+}
+.portrait-modal-dossier {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.portrait-modal-dossier .eyebrow {
+  margin-bottom: 8px;
+}
+.portrait-modal-dossier h2 {
+  color: var(--wine);
+  font-size: clamp(2.1rem, 3.6vw, 2.85rem);
+  letter-spacing: -0.035em;
+  margin: 0 0 14px;
+}
+.portrait-dossier-quote {
+  border-left: 2px solid var(--sage);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.52;
+  margin: 0 0 20px;
+  padding-left: 16px;
+}
+.portrait-dossier-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.dossier-badge {
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+.dossier-badge.wine {
+  background: var(--wine-soft);
+  color: var(--wine);
+}
+.dossier-badge.sage {
+  background: var(--sage-soft);
+  color: var(--sage-dark);
+}
+.dossier-badge.sand {
+  background: var(--sand-soft);
+  color: #7c542d;
+}
+.portrait-spec-list {
+  background: rgba(251, 248, 241, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 16px 18px;
+}
+.portrait-spec-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.portrait-spec-row + .portrait-spec-row {
+  border-top: 1px solid var(--line);
+  padding-top: 11px;
+}
+.portrait-spec-row dt {
+  color: var(--sage-dark);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.portrait-spec-row dd {
+  color: var(--ink);
+  font-size: 0.85rem;
+  line-height: 1.48;
+  margin: 0;
+}
+.portrait-spec-row .spec-cleared {
+  align-items: center;
+  color: var(--sage-dark);
+  display: inline-flex;
+  font-weight: 600;
+  gap: 8px;
+}
+.portrait-dossier-footer {
+  align-items: center;
+  border-top: 1px dashed rgba(122, 38, 56, 0.2);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.76rem;
+  gap: 10px;
+  justify-content: space-between;
+  padding-top: 14px;
+}
+.portrait-dossier-footer em {
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: 0.88rem;
+}
+@keyframes portrait-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .marquee {
@@ -1835,6 +2138,13 @@ footer span { color: rgba(255,255,255,.55); }
   .portrait-stage {
     width: min(370px, 92%);
   }
+  .portrait-modal-body {
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  .portrait-modal-image {
+    height: 360px;
+  }
   .about-grid { gap: 50px; }
   .stack-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .stack-card { grid-column: span 3; }
@@ -1909,6 +2219,31 @@ footer span { color: rgba(255,255,255,.55); }
   }
   .portrait-window {
     height: 330px;
+  }
+  .portrait-zoom-pill {
+    opacity: 1;
+    transform: none;
+  }
+  .portrait-modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .portrait-modal-frame {
+    border-radius: 28px 28px 0 0;
+    max-height: 92vh;
+  }
+  .portrait-modal-topbar {
+    padding: 14px 18px;
+  }
+  .portrait-archive-code {
+    display: none;
+  }
+  .portrait-modal-body {
+    gap: 22px;
+    padding: 20px 18px 28px;
+  }
+  .portrait-modal-image {
+    height: 310px;
   }
   .marquee div { animation: drift 18s linear infinite; justify-content: flex-start; padding-left: 20px; }
   .section { padding: 84px 20px; }
