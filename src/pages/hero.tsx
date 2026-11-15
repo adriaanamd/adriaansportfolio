@@ -95,7 +95,7 @@ export default function Hero() {
               <dt>Availability</dt>
               <dd className="availability-status">
                 <span className="status-dot" aria-hidden="true" />
-                Open for Junior QA / SDET Roles, Full-Time & OJT
+                Open for Junior QA / SWE / SDET Roles, Full-Time & OJT
               </dd>
             </div>
             <div className="hero-footnote-item">
