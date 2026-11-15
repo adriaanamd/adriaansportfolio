@@ -12,7 +12,7 @@ export default function Contact() {
           <em>Let’s make it fly.</em>
         </h2>
         <p>
-          I’m actively seeking Junior QA and SDET opportunities—open to
+          I’m actively seeking Junior QA, SWE, and/or SDET opportunities—open to
           full-time junior roles, OJT placement, and testing challenges where
           precision, test automation, and product reliability matter.
         </p>
