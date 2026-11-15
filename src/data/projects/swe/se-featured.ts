@@ -87,7 +87,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
   },
   {
     slug: "meatlens-swe",
-    title: "MeatLens",
+    title: "Project MeatLens",
     image: meatLensImage,
     eyebrow: "Software engineering · Thesis",
     description:
