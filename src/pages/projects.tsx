@@ -1,10 +1,60 @@
+import { useCallback, useEffect, useMemo, useState } from "react"
+
 import ArrowIcon from "../components/ArrowIcon"
+import CaseStudyDrawer from "../components/CaseStudyDrawer"
 import ProjectCard from "../components/ProjectCard"
 import ScrollFade from "../components/ScrollFade"
 import { qaFeaturedProjects } from "../data/projects/qa/qa-featured"
 import { engineeringFeaturedProjects } from "../data/projects/swe/se-featured"
 
 export default function Projects() {
+  const allFeaturedProjects = useMemo(
+    () => [...qaFeaturedProjects, ...engineeringFeaturedProjects],
+    [],
+  )
+
+  const [activeCaseSlug, setActiveCaseSlug] = useState<string | null>(null)
+
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const params = new URLSearchParams(window.location.search)
+      const caseParam = params.get("case")
+      if (
+        caseParam &&
+        allFeaturedProjects.some((project) => project.slug === caseParam)
+      ) {
+        setActiveCaseSlug(caseParam)
+      } else {
+        setActiveCaseSlug(null)
+      }
+    }
+
+    syncFromUrl()
+    window.addEventListener("popstate", syncFromUrl)
+    return () => window.removeEventListener("popstate", syncFromUrl)
+  }, [allFeaturedProjects])
+
+  const handleOpenCaseStudy = useCallback((slug: string) => {
+    setActiveCaseSlug(slug)
+    const url = new URL(window.location.href)
+    url.searchParams.set("case", slug)
+    window.history.pushState({}, "", url.toString())
+  }, [])
+
+  const handleCloseCaseStudy = useCallback(() => {
+    setActiveCaseSlug(null)
+    const url = new URL(window.location.href)
+    url.searchParams.delete("case")
+    window.history.pushState({}, "", url.toString())
+  }, [])
+
+  const activeProject = useMemo(
+    () =>
+      allFeaturedProjects.find((project) => project.slug === activeCaseSlug) ??
+      null,
+    [allFeaturedProjects, activeCaseSlug],
+  )
+
   return (
     <section className="section work-section" id="work">
       <ScrollFade>
@@ -24,7 +74,12 @@ export default function Projects() {
         </div>
         <div className="projects-grid">
           {qaFeaturedProjects.map((project, index) => (
-            <ProjectCard project={project} index={index} key={project.title} />
+            <ProjectCard
+              project={project}
+              index={index}
+              key={project.slug}
+              onOpenCaseStudy={handleOpenCaseStudy}
+            />
           ))}
         </div>
         <div className="dump-cta">
@@ -55,7 +110,12 @@ export default function Projects() {
         </div>
         <div className="projects-grid">
           {engineeringFeaturedProjects.map((project, index) => (
-            <ProjectCard project={project} index={index} key={project.title} />
+            <ProjectCard
+              project={project}
+              index={index}
+              key={project.slug}
+              onOpenCaseStudy={handleOpenCaseStudy}
+            />
           ))}
         </div>
         <div className="dump-cta">
@@ -68,6 +128,13 @@ export default function Projects() {
           </a>
         </div>
       </ScrollFade>
+
+      <CaseStudyDrawer
+        project={activeProject}
+        allProjects={allFeaturedProjects}
+        onSelectProject={handleOpenCaseStudy}
+        onClose={handleCloseCaseStudy}
+      />
     </section>
   )
 }
