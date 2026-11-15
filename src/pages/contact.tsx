@@ -7,7 +7,7 @@ export default function Contact() {
       <div className="contact-inner">
         <p className="eyebrow">06 · Contact</p>
         <h2>
-          Have a QA opportunity in mind?
+          Have a QA or SWE opportunity in mind?
           <br />
           <em>Let’s make it fly.</em>
         </h2>
