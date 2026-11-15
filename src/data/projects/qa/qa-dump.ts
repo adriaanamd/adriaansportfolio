@@ -1,10 +1,15 @@
 import type { ArchiveProject } from "../types"
+import camFleaImage from "../../../project-assets/qa/camflea-qa.png"
 
 export const qaArchive: ArchiveProject[] = [
   [
-    "ExamHub — integrity test plan",
-    "Automation · regression · monitoring",
-    "https://github.com/adriaanamd/ExamHub",
+    "CamFlea",
+    "Test automation · regression · CBF recommendation",
+    "https://github.com/adriaanamd/camflea",
+    "https://github.com/adriaanamd/camflea",
+    camFleaImage,
+    "A flea marketplace application designed for students of institutions. This one's specifically done for a final project in 2025's Software Engineering 1 and 2. Rebuilt with a better architecture and a CBF recommendation algorithm, with heavy use of tests to preserve old application behavior.",
+    ["Test automation", "Regression", "CBF algorithm"],
   ],
   [
     "SnapBooth — release QA",

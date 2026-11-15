@@ -1,17 +1,18 @@
 import type { FeaturedProject } from "../types"
-import examHubImage from "../../../project-assets/qa/examhub-qa.png"
+import camFleaImage from "../../../project-assets/qa/camflea-qa.png"
 import meatLensImage from "../../../project-assets/qa/meatlens-qa.png"
 import myLightDrugstoreImage from "../../../project-assets/qa/mylightdrugstore-qa.png"
 
 export const qaFeaturedProjects: FeaturedProject[] = [
   {
-    title: "ExamHub integrity testing",
-    image: examHubImage,
-    eyebrow: "QA case study · Web application",
+    title: "CamFlea",
+    image: camFleaImage,
+    eyebrow: "QA case study · Marketplace application",
     description:
-      "An automated Exam Management System designed for modern classrooms. Includes real-time monitoring, anti-cheat countermeasures, and a centralized dashboard for student performance analytics. Created as the final requirement for Frontend and Backend Electives.",
-    tags: ["Playwright", "Test design", "Regression"],
-    link: "https://github.com/adriaanamd/ExamHub",
+      "A flea marketplace application designed for students of institutions. This one's specifically done for a final project in 2025's Software Engineering 1 and 2. Rebuilt with a better architecture and a CBF recommendation algorithm, with heavy use of tests to preserve old application behavior.",
+    tags: ["Test automation", "Regression", "CBF algorithm"],
+    link: "https://github.com/adriaanamd/camflea",
+    liveDemo: "https://github.com/adriaanamd/camflea",
     accent: "wine",
   },
   {
