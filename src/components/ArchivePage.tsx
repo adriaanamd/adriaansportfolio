@@ -1,6 +1,7 @@
 import type { ArchiveProject } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
 import ExternalIcon from "./ExternalIcon"
+import ScrollFade from "./ScrollFade"
 import SiteHeader from "./SiteHeader"
 
 export function ArchivePage({
@@ -16,7 +17,7 @@ export function ArchivePage({
     <main className="dump-page">
       <SiteHeader archive />
 
-      <section className="dump-hero">
+      <ScrollFade as="section" className="dump-hero">
         <a href="./#work" className="back-link">
           ← Back to selected work
         </a>
@@ -43,9 +44,9 @@ export function ArchivePage({
             SE project dump
           </a>
         </div>
-      </section>
+      </ScrollFade>
 
-      <section className="dump-list-section">
+      <ScrollFade as="section" className="dump-list-section">
         <div className="dump-count">
           <span>Archive index</span>
           <strong>{String(projects.length).padStart(2, "0")} entries</strong>
@@ -139,14 +140,14 @@ export function ArchivePage({
             ),
           )}
         </div>
-      </section>
+      </ScrollFade>
 
-      <section className="dump-footer">
+      <ScrollFade as="section" className="dump-footer">
         <p>Looking for the highlights?</p>
         <a href="./#work" className="button cream-button">
           View selected work <ArrowIcon />
         </a>
-      </section>
+      </ScrollFade>
     </main>
   )
 }

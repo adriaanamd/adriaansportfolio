@@ -1,8 +1,9 @@
 import ArrowIcon from "../components/ArrowIcon"
+import ScrollFade from "../components/ScrollFade"
 
 export default function Contact() {
   return (
-    <section className="contact-section" id="contact">
+    <ScrollFade as="section" className="contact-section" id="contact">
       <div className="contact-inner">
         <p className="eyebrow">06 · Contact</p>
         <h2>
@@ -49,6 +50,6 @@ export default function Contact() {
         <span>Olongapo City, Philippines</span>
         <span>© 2026 Adriaan M. Dimate</span>
       </footer>
-    </section>
+    </ScrollFade>
   )
 }

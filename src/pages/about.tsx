@@ -1,8 +1,9 @@
 import ArrowIcon from "../components/ArrowIcon"
+import ScrollFade from "../components/ScrollFade"
 
 export default function About() {
   return (
-    <section className="section about" id="about">
+    <ScrollFade as="section" className="section about" id="about">
       <div className="section-heading">
         <p className="eyebrow">05 · About me</p>
         <h2>
@@ -59,6 +60,6 @@ export default function About() {
           </div>
         </aside>
       </div>
-    </section>
+    </ScrollFade>
   )
 }

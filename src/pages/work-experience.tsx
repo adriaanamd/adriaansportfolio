@@ -1,8 +1,13 @@
+import ScrollFade from "../components/ScrollFade"
 import { experience } from "../data/experience/work-experience"
 
 export default function WorkExperience() {
   return (
-    <section className="section experience-section" id="experience">
+    <ScrollFade
+      as="section"
+      className="section experience-section"
+      id="experience"
+    >
       <div className="section-heading split-heading">
         <div>
           <p className="eyebrow">04 · Experience</p>
@@ -49,6 +54,6 @@ export default function WorkExperience() {
           </article>
         ))}
       </div>
-    </section>
+    </ScrollFade>
   )
 }

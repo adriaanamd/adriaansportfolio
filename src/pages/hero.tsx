@@ -1,10 +1,11 @@
 import ArrowIcon from "../components/ArrowIcon"
 import ExternalIcon from "../components/ExternalIcon"
+import ScrollFade from "../components/ScrollFade"
 
 export default function Hero() {
   return (
     <>
-      <section className="hero" id="top">
+      <ScrollFade as="section" className="hero" id="top">
         <div className="hero-orb orb-one" />
         <div className="hero-orb orb-two" />
         <div className="hero-copy">
@@ -65,7 +66,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </section>
+      </ScrollFade>
     </>
   )
 }

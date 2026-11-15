@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+import ScrollFade from "../components/ScrollFade"
 import { stack, type StackItem } from "../data/stack/stack"
 
 function StackIcon({ item }: { item: StackItem }) {
@@ -36,7 +37,7 @@ export default function Stack() {
   )
 
   return (
-    <section className="section stack-section" id="stack">
+    <ScrollFade as="section" className="section stack-section" id="stack">
       <div className="stack-intro">
         <div>
           <p className="eyebrow">03 · Tech stack</p>
@@ -68,6 +69,6 @@ export default function Stack() {
           </article>
         ))}
       </div>
-    </section>
+    </ScrollFade>
   )
 }
