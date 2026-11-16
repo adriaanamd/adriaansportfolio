@@ -46,6 +46,7 @@ export type FeaturedProject = {
 export type ArchiveProject = {
   slug: string
   title: string
+  image: string
   eyebrow: string
   role: string
   description: string

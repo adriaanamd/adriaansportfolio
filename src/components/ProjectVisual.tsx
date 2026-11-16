@@ -1,9 +1,9 @@
-import type { FeaturedProject } from "../data/projects/types"
+import type { ArchiveProject, FeaturedProject } from "../data/projects/types"
 
 export default function ProjectVisual({
   project,
 }: {
-  project: FeaturedProject
+  project: Pick<FeaturedProject | ArchiveProject, "title" | "image" | "accent">
 }) {
   return (
     <div className={`project-visual ${project.accent}`}>
@@ -11,6 +11,7 @@ export default function ProjectVisual({
         className="project-image"
         src={project.image}
         alt={`${project.title} project preview`}
+        loading="lazy"
       />
       <div className="browser-bar">
         <span />

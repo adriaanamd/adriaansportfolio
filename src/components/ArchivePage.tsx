@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router"
 import type { ArchiveProject } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
 import ExternalIcon from "./ExternalIcon"
+import ProjectVisual from "./ProjectVisual"
 import ScrollFade from "./ScrollFade"
 import SiteHeader from "./SiteHeader"
 
@@ -38,16 +39,14 @@ export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
             <article className="dump-card glass" key={project.slug}>
               <div className="dump-card-top">
                 <span className="dump-card-index">
-                  0{index + 1} · {project.role}
+                  {String(index + 1).padStart(2, "0")} · {project.role}
                 </span>
                 <span className={`case-track-pill ${project.accent}`}>
                   {project.title}
                 </span>
               </div>
 
-              <div className={`dump-monogram ${project.accent}`}>
-                {project.title.slice(0, 2)}
-              </div>
+              <ProjectVisual project={project} />
 
               <p className="dump-eyebrow">{project.eyebrow}</p>
               <h2>{project.title}</h2>

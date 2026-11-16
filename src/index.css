@@ -1867,29 +1867,14 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.dump-monogram {
-  align-items: center;
+.dump-card .project-visual {
+  border: 1px solid var(--line);
   border-radius: 18px;
-  display: flex;
-  font-family: var(--serif);
-  font-size: 2.1rem;
-  font-style: italic;
-  height: 76px;
-  justify-content: center;
-  margin: 24px 0 20px;
-  width: 76px;
+  height: 240px;
+  margin: 20px 0 22px;
 }
-.dump-monogram.wine {
-  background: var(--wine-soft);
-  color: var(--wine);
-}
-.dump-monogram.sage {
-  background: var(--sage-soft);
-  color: var(--sage-dark);
-}
-.dump-monogram.sand {
-  background: var(--sand-soft);
-  color: #8a6036;
+.dump-card:hover .project-image {
+  transform: scale(1.03);
 }
 .dump-eyebrow {
   color: var(--muted);
@@ -2280,6 +2265,7 @@ footer span { color: rgba(255,255,255,.55); }
   .dump-list-section { padding: 0 20px 80px; }
   .dump-grid { grid-template-columns: 1fr; }
   .dump-card { padding: 22px; }
+  .dump-card .project-visual { height: 200px; margin: 16px 0 18px; }
   .dump-footer { align-items: flex-start; flex-direction: column; gap: 22px; padding-left: 20px; padding-right: 20px; }
   .loading-screen { padding: 16px; }
   .loading-agent-card { border-radius: 22px; gap: 14px; padding: 18px; }

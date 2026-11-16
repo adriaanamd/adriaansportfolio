@@ -1,9 +1,14 @@
 import type { ArchiveProject } from "./types"
+import inkwellImage from "../../project-assets/archive/inkwell.png"
+import snapBoothImage from "../../project-assets/archive/snapbooth.png"
+import tahananImage from "../../project-assets/archive/tahanan.png"
+import warOfDotsImage from "../../project-assets/archive/war-of-dots.png"
 
 export const significantArchiveProjects: ArchiveProject[] = [
   {
     slug: "inkwell",
     title: "Inkwell",
+    image: inkwellImage,
     eyebrow: "Desktop & Android · Cryptographic PDF Signing",
     role: "Full-Stack Engineering & Vitest QA",
     description:
@@ -29,6 +34,7 @@ export const significantArchiveProjects: ArchiveProject[] = [
   {
     slug: "snapbooth",
     title: "SnapBooth",
+    image: snapBoothImage,
     eyebrow: "Real-Time WebSockets · Cross-Browser Camera QA",
     role: "Full-Stack Engineering & Release QA",
     description:
@@ -53,6 +59,7 @@ export const significantArchiveProjects: ArchiveProject[] = [
   {
     slug: "tahanan",
     title: "Tahanan",
+    image: tahananImage,
     eyebrow: "Progressive Web App · Android · Realtime & RLS",
     role: "Full-Stack Engineering & Playwright E2E",
     description:
@@ -77,6 +84,7 @@ export const significantArchiveProjects: ArchiveProject[] = [
   {
     slug: "war-of-dots",
     title: "War of Dots",
+    image: warOfDotsImage,
     eyebrow: "Multiplayer RTS · Live Beta QA & Official Site",
     role: "Beta QA Tester & Credited Website Designer",
     description:
