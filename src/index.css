@@ -1155,21 +1155,21 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
 .mini-facts span { color: var(--muted); font-size: .72rem; }
 
 .stack-section {
-  max-width: none;
-  overflow: hidden;
-  padding-left: max(28px, calc((100% - 1144px) / 2));
-  padding-right: max(28px, calc((100% - 1144px) / 2));
   position: relative;
 }
-.stack-section::before {
-  background:
-    radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.82), transparent 23%),
-    linear-gradient(135deg, rgba(229, 234, 220, 0.92), rgba(241, 229, 210, 0.72));
-  border-radius: 56px;
-  content: "";
-  inset: 38px 0;
-  position: absolute;
-  z-index: -1;
+.stack-orb-one {
+  background: var(--sage-soft);
+  height: 440px;
+  left: -260px;
+  top: 90px;
+  width: 440px;
+}
+.stack-orb-two {
+  background: var(--wine-soft);
+  bottom: 110px;
+  height: 390px;
+  right: -270px;
+  width: 390px;
 }
 .stack-intro {
   align-items: end;

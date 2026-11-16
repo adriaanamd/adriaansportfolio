@@ -2,7 +2,7 @@ import type { ArchiveProject } from "./types"
 import inkwellImage from "../../project-assets/archive/inkwell.png"
 import snapBoothImage from "../../project-assets/archive/snapbooth.png"
 import tahananImage from "../../project-assets/archive/tahanan.png"
-import warOfDotsImage from "../../project-assets/archive/war-of-dots.png"
+import warOfDotsImage from "../../project-assets/archive/wod.png"
 
 export const significantArchiveProjects: ArchiveProject[] = [
   {

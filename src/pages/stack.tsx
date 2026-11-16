@@ -38,6 +38,9 @@ export default function Stack() {
 
   return (
     <ScrollFade as="section" className="section stack-section" id="stack">
+      <div className="hero-orb stack-orb-one" aria-hidden="true" />
+      <div className="hero-orb stack-orb-two" aria-hidden="true" />
+
       <div className="stack-intro">
         <div>
           <p className="eyebrow">03 · Tech stack</p>
