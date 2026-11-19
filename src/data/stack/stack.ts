@@ -75,7 +75,6 @@ export const stack: StackGroup[] = [
     items: [
       { name: "PostgreSQL", icon: simpleIcon("postgresql") },
       { name: "MySQL", icon: simpleIcon("mysql") },
-      { name: "MongoDB", icon: simpleIcon("mongodb") },
       { name: "SQLite", icon: simpleIcon("sqlite") },
     ],
   },
