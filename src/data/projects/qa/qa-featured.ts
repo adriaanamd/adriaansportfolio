@@ -94,6 +94,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
       "SQLite",
     ],
     link: "https://github.com/icarechurch/Shekinah",
+    liveDemo: "https://github.com/icarechurch/Shekinah/releases/",
     accent: "sage",
     caseStudy: {
       track: "qa",
