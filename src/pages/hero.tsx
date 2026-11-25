@@ -4,6 +4,7 @@ import { createPortal } from "react-dom"
 import ArrowIcon from "../components/ArrowIcon"
 import ExternalIcon from "../components/ExternalIcon"
 import ScrollFade from "../components/ScrollFade"
+import { activeResumeHref } from "../data/resume"
 
 export default function Hero() {
   const [portraitOpen, setPortraitOpen] = useState(false)
@@ -81,7 +82,7 @@ export default function Hero() {
             </a>
             <div className="hero-secondary-actions">
               <a
-                href="/final%20adriaan%20resume.pdf"
+                href={activeResumeHref}
                 target="_blank"
                 rel="noreferrer"
                 className="button secondary"
