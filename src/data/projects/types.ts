@@ -55,4 +55,11 @@ export type ArchiveProject = {
   accent: ProjectAccent
   repoUrl?: string
   liveUrl?: string
+  paperLink?: string
+  extraLinks?: ProjectLink[]
+  caseStudy?: CaseStudy
+}
+
+export type CaseStudyProject = FeaturedProject | ArchiveProject & {
+  caseStudy: CaseStudy
 }

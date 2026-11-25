@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 
-import type { FeaturedProject } from "../data/projects/types"
+import type { CaseStudyProject } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
 import ExternalIcon from "./ExternalIcon"
 
@@ -11,8 +11,8 @@ export default function CaseStudyDrawer({
   onSelectProject,
   onClose,
 }: {
-  project: FeaturedProject | null
-  allProjects: FeaturedProject[]
+  project: CaseStudyProject | null
+  allProjects: CaseStudyProject[]
   onSelectProject: (slug: string) => void
   onClose: () => void
 }) {
@@ -88,17 +88,24 @@ export default function CaseStudyDrawer({
   }
 
   const { caseStudy } = project
+  const liveDemoUrl = "liveDemo" in project ? project.liveDemo : project.liveUrl
+  const projectUrl = "link" in project ? project.link : project.repoUrl
   const currentIndex = allProjects.findIndex(
     (item) => item.slug === project.slug,
   )
+  const effectiveIndex = currentIndex >= 0 ? currentIndex : 0
   const prevProject =
-    currentIndex > 0
-      ? allProjects[currentIndex - 1]
-      : allProjects[allProjects.length - 1]
+    allProjects.length > 1
+      ? effectiveIndex > 0
+        ? allProjects[effectiveIndex - 1]
+        : allProjects[allProjects.length - 1]
+      : null
   const nextProject =
-    currentIndex < allProjects.length - 1
-      ? allProjects[currentIndex + 1]
-      : allProjects[0]
+    allProjects.length > 1
+      ? effectiveIndex < allProjects.length - 1
+        ? allProjects[effectiveIndex + 1]
+        : allProjects[0]
+      : null
 
   const handleCopyLink = async () => {
     try {
@@ -133,8 +140,8 @@ export default function CaseStudyDrawer({
                 : "Engineering Case Study"}
             </span>
             <span className="case-index-counter">
-              {String(currentIndex + 1).padStart(2, "0")} /{" "}
-              {String(allProjects.length).padStart(2, "0")}
+              {String(effectiveIndex + 1).padStart(2, "0")} /{" "}
+              {String(Math.max(1, allProjects.length)).padStart(2, "0")}
             </span>
           </div>
           <div className="case-modal-actions">
@@ -180,9 +187,9 @@ export default function CaseStudyDrawer({
             </div>
 
             <div className="case-hero-links">
-              {project.liveDemo && (
+              {liveDemoUrl && (
                 <a
-                  href={project.liveDemo}
+                  href={liveDemoUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="button primary case-cta-link"
@@ -201,15 +208,17 @@ export default function CaseStudyDrawer({
                   Research paper <ExternalIcon />
                 </a>
               )}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="button secondary case-cta-link"
-              >
-                {project.liveDemo ? "View repository" : "Open project"}{" "}
-                <ExternalIcon />
-              </a>
+              {projectUrl && (
+                <a
+                  href={projectUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button secondary case-cta-link"
+                >
+                  {liveDemoUrl ? "View repository" : "Open project"}{" "}
+                  <ExternalIcon />
+                </a>
+              )}
               {project.extraLinks?.map((extra) => (
                 <a
                   key={extra.url}
@@ -277,32 +286,34 @@ export default function CaseStudyDrawer({
             <strong>“{caseStudy.takeaway}”</strong>
           </aside>
 
-          <nav className="case-footer-nav" aria-label="Other case studies">
-            {prevProject && (
-              <button
-                type="button"
-                className="case-nav-card prev"
-                onClick={() => onSelectProject(prevProject.slug)}
-              >
-                <span className="case-nav-dir">← Previous case study</span>
-                <strong>{prevProject.title}</strong>
-                <small>{prevProject.eyebrow}</small>
-              </button>
-            )}
-            {nextProject && (
-              <button
-                type="button"
-                className="case-nav-card next"
-                onClick={() => onSelectProject(nextProject.slug)}
-              >
-                <span className="case-nav-dir">
-                  Next case study <ArrowIcon />
-                </span>
-                <strong>{nextProject.title}</strong>
-                <small>{nextProject.eyebrow}</small>
-              </button>
-            )}
-          </nav>
+          {(prevProject || nextProject) && (
+            <nav className="case-footer-nav" aria-label="Other case studies">
+              {prevProject && (
+                <button
+                  type="button"
+                  className="case-nav-card prev"
+                  onClick={() => onSelectProject(prevProject.slug)}
+                >
+                  <span className="case-nav-dir">← Previous case study</span>
+                  <strong>{prevProject.title}</strong>
+                  <small>{prevProject.eyebrow}</small>
+                </button>
+              )}
+              {nextProject && (
+                <button
+                  type="button"
+                  className="case-nav-card next"
+                  onClick={() => onSelectProject(nextProject.slug)}
+                >
+                  <span className="case-nav-dir">
+                    Next case study <ArrowIcon />
+                  </span>
+                  <strong>{nextProject.title}</strong>
+                  <small>{nextProject.eyebrow}</small>
+                </button>
+              )}
+            </nav>
+          )}
         </div>
       </aside>
     </div>,

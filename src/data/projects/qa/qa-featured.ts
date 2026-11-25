@@ -1,7 +1,7 @@
 import type { FeaturedProject } from "../types"
 import camFleaImage from "../../../project-assets/qa/camflea-qa.png"
-import meatLensImage from "../../../project-assets/qa/meatlens-qa.png"
 import myLightDrugstoreImage from "../../../project-assets/qa/mylightdrugstore-qa.png"
+import shekinahImage from "../../../project-assets/qa/shekinah-qa.png"
 
 export const qaFeaturedProjects: FeaturedProject[] = [
   {
@@ -80,80 +80,84 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     },
   },
   {
-    slug: "meatlens-qa",
-    title: "MeatLens model acceptance",
-    image: meatLensImage,
-    eyebrow: "QA case study · Classification workflow",
+    slug: "shekinah-qa",
+    title: "Shekinah",
+    image: shekinahImage,
+    eyebrow: "QA case study · Worship presentation system",
     description:
-      "A structured acceptance pass for the inspection workflow, focused on input validation, classification confidence, and evidence around edge cases.",
-    tags: ["Exploratory QA", "Data validation", "Acceptance"],
-    link: "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
-    liveDemo: "https://meatlensv2.netlify.app",
-    paperLink: "/meatlens-research-paper.pdf",
+      "A full-scale native C++20 and Qt 6 ProPresenter replacement built for I Care Balaybay Mountain Church and I Care SBMA. Engineered and stress-tested under strict TDD to run live worship lyrics, sermon decks, looping video backgrounds, and dual-monitor audience output on Celeron N4000-class Windows hardware with 4 GB RAM.",
+    tags: [
+      "Catch2 & CTest",
+      "Qt 6 Test",
+      "Performance & Memory QA",
+      "C++20",
+      "SQLite",
+    ],
+    link: "https://github.com/icarechurch/Shekinah",
     accent: "sage",
     caseStudy: {
       track: "qa",
       subtitle:
-        "Validating a 5-tier pork freshness CNN, pre-scan DTI compliance gates, and 4-sharded Playwright + Android CI pipelines.",
-      role: "Project Leader · QA & Acceptance Lead",
+        "Enforcing a <300 MB process working-set ceiling, ≤100 ms p95 live cue latency, and 9-lane Catch2 + Qt Test verification for a native C++20 ProPresenter replacement on Celeron N4000 hardware.",
+      role: "Lead Software Engineer & Test Architect",
       context:
-        "Ikot Palengke Wet-Market Trials · Olongapo City Veterinary Office",
-      focus: "Model Acceptance · 4-Shard Playwright CI · Blur & Scope Guards",
+        "I Care Balaybay Mountain Church & I Care SBMA · ProPresenter Replacement",
+      focus: "9 CTest Suites · N4000 Hardware Gate · <300 MB Resource Governor",
       metrics: [
         {
-          value: "4 Shards",
+          value: "9 Suites",
           label:
-            "Deterministic Playwright E2E lanes capped at 110s per shard in GitHub Actions",
+            "Blocking CTest lanes: Smoke, Support, Domain, Storage, Application, Media, UI, E2E & Performance",
         },
         {
-          value: "5 Classes",
+          value: "< 300 MB",
           label:
-            "Veterinary-validated ground truth: Fresh, Acceptable, Not Fresh, Warning, Spoiled",
+            "Hard process working-set ceiling with staged ResourceGovernor eviction at 220/250/270 MB",
         },
         {
-          value: "Java 21 + Web",
+          value: "≤ 100 ms",
           label:
-            "Path-aware CI gating React, Express/OpenCV, and Android Gradle JVM/WebView suites",
+            "Direct cue-to-program latency p95 and 33.3 ms (1080p30) frame budget on Celeron N4000",
         },
       ],
       sections: [
         {
           eyebrow: "01 · Context & Risk",
           title:
-            "Preventing bad captures, scope creep, and false confidence in wet-market inspections",
-          body: "In field trials for Olongapo City's Ikot Palengke program, two major quality risks emerged: web-camera limitations producing blurry or poorly lit specimen photos, and scope ambiguity around non-pork samples or failed sanitation conditions that AI alone cannot judge.",
+            "Replacing ProPresenter on modest church hardware without dropping a live worship cue",
+          body: "Built as a full-scale ProPresenter replacement for I Care Balaybay Mountain Church and I Care SBMA, Shekinah had to deliver a complete live worship presentation workflow—reusable songs with continuous-text reflow editing, ordered sermon decks, file-backed image and looping MP4/H.264 backgrounds, a responsive 1–6 column operator cue grid, and full-screen dual-monitor audience output—while running reliably on two-core Intel Celeron N4000 Windows PCs with UHD 600 graphics and 4 GB of RAM.",
         },
         {
           eyebrow: "02 · Test Strategy & Coverage",
           title:
-            "Multi-layered acceptance from regulatory pre-checks to sharded E2E and Android gates",
-          body: "Acceptance testing spanned deterministic workflow rules, model ground-truth evaluation, and cross-platform CI:",
+            "Strict TDD across 9 CTest architectural lanes and an automated N4000 benchmark executable",
+          body: "To prevent Qt UI state, SQLite persistence, and live media decoding from coupling into untestable desktop code, the C++20 codebase was split into strict domain, application, storage, media, and Feature-Sliced Qt UI boundaries—each locked down by dedicated Catch2 v3 and Qt Test executables:",
           bullets: [
-            "4-Sharded Playwright E2E Suite: Split into fast pull-request critical journeys (test:e2e:critical) and 4 deterministic full-coverage shards (test:e2e:full --shard=1/4..4/4), each bounded by a strict 110-second global timeout.",
-            "Android JVM & Instrumentation Gate: Added Gradle JVM architecture contracts (android/app/src/test) and ActivityScenario/WebView checks (android/app/src/androidTest) under Java 21.",
-            "In-App Ground Truth Recalibration: Built an Admin Datasets & Ground Truth workspace where manual inspector overrides immediately recalculate live Precision, Recall, Accuracy, and F1-Score.",
+            "9 Blocking CTest Executables: Covered smoke, test-support fixtures, pure Qt-independent domain logic (presentation_engine_test), application contracts (presentation_service, song_reflow, song_text_importer, resource_governor), SQLite repositories and atomic asset/sermon importers, media caches, 13 Qt Test UI widget suites, operator-to-output E2E, and memory budget gates.",
+            "Operator-to-Output E2E Verification (operator_to_output_test.cpp): Programmatically drives ShekinahWindow with QTest—creating a SQLite project folder, importing sermon slides, activating library rows, left-clicking cue cards, and asserting that AudienceOutput enters ProgramMode::cue with the rendered slide before verifying Clear and Blackout recovery.",
+            "Windows UCRT64 Debug & Release CI + Benchmark Artifact: GitHub Actions compiles with -Wall -Wextra -Wpedantic -Werror across both debug and release MSYS2 UCRT64 presets, runs the full unfiltered CTest gate, and executes shekinah_n4000_bench.exe to upload JSON telemetry (working set, cue latency p95, CPU p95, decode path, and governor transitions).",
           ],
         },
         {
           eyebrow: "03 · Edge Cases & Key Findings",
           title:
-            "Hardening camera blur prevention, regulatory short-circuits, and specimen boundaries",
-          body: "Field-informed QA passes drove four critical product revisions:",
+            "Staged memory governance, atomic SQLite asset rollbacks, and non-live editing isolation",
+          body: "Automated contract, UI, and performance tests targeted the failure modes that crash or stall live church services:",
           bullets: [
-            "Pre-Scan Safety Short-Circuit: Verified that if any DTI compliance check (Stall Number, MIC proof, expiry date, storage, light color, or area cleanliness) is answered 'No', the app bypasses AI inference and immediately logs the inspection as spoiled.",
-            "Native camera routing & blur rejection: Replaced constrained web-camera streams with native phone camera invocation and a blur-prevention algorithm to reject out-of-focus captures before analysis.",
-            "Strict specimen delimitation: Enforced explicit Pork-only scope reminders and boundaries so beef, poultry, or fish samples are never misclassified under pork freshness weights.",
+            "Staged ResourceGovernor & Byte-Bounded Pools (resource_governor_test.cpp, memory_budget_test.cpp): Capped active still-image textures at 36 MiB while sampling process working set every second—purging non-live caches at 220 MB, cancelling queued imports and releasing inactive media at 250 MB, and blocking new live video loads at 270 MB before the 300 MB hard gate.",
+            "Live Program Isolation & UTF-8 Reflow Integrity: Verified that selecting service-order items, dragging assets onto songs or slide ranges, opening the right-click floating Inspector, or editing continuous lyric text with Ctrl+Enter slide-break markers in ReflowEditorDialog never mutates the live audience monitor until an operator explicitly left-clicks a cue.",
+            "Content-Hashed Deduplication & Transactional Rollback: Confirmed that importing identical media reuses existing content-hash asset records, removing service-order items never deletes underlying reusable songs or media files, and failed imports roll back SQLite metadata atomically.",
           ],
         },
         {
           eyebrow: "04 · Outcome & Release Confidence",
           title:
-            "Certified by the Lead City Veterinarian for academic and field documentation",
-          body: "Backed by formal certification from Dr. Joseph Arnold C. Lopez (Lead Veterinarian, Olongapo City Veterinary Office) and zero-vulnerability runtime/dependency gates (security:audit & security:runtime), MeatLens achieved full acceptance for its 5-level classification workflow.",
+            "A deterministic, low-footprint native worship engine proven in CI",
+          body: "By treating memory ceilings, cue-to-output latency, and operator UI isolation as blocking CTest gates under -Werror, Shekinah delivers a full-scale ProPresenter workflow in native C++20/Qt 6 that holds steady on 4 GB Celeron hardware.",
         },
       ],
       takeaway:
-        "Model acceptance is more than a confusion matrix—it means guarding what enters the lens, short-circuiting when regulatory safety fails, and proving every path in CI.",
+        "When building live event software for constrained hardware, performance and memory budgets cannot be afterthoughts—they have to be executable test contracts enforced on every build.",
     },
   },
   {

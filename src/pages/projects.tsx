@@ -5,13 +5,30 @@ import ArrowIcon from "../components/ArrowIcon"
 import CaseStudyDrawer from "../components/CaseStudyDrawer"
 import ProjectCard from "../components/ProjectCard"
 import ScrollFade from "../components/ScrollFade"
+import { significantArchiveProjects } from "../data/projects/archive"
 import { qaFeaturedProjects } from "../data/projects/qa/qa-featured"
 import { engineeringFeaturedProjects } from "../data/projects/swe/se-featured"
+import type {
+  ArchiveProject,
+  CaseStudy,
+  CaseStudyProject,
+} from "../data/projects/types"
 
 export default function Projects() {
   const allFeaturedProjects = useMemo(
     () => [...qaFeaturedProjects, ...engineeringFeaturedProjects],
     [],
+  )
+
+  const allCaseStudyProjects = useMemo<CaseStudyProject[]>(
+    () => [
+      ...allFeaturedProjects,
+      ...significantArchiveProjects.filter(
+        (project): project is ArchiveProject & { caseStudy: CaseStudy } =>
+          Boolean(project.caseStudy),
+      ),
+    ],
+    [allFeaturedProjects],
   )
 
   const [activeCaseSlug, setActiveCaseSlug] = useState<string | null>(null)
@@ -21,11 +38,11 @@ export default function Projects() {
     const caseParam = params.get("case")
     if (
       caseParam &&
-      allFeaturedProjects.some((project) => project.slug === caseParam)
+      allCaseStudyProjects.some((project) => project.slug === caseParam)
     ) {
       setActiveCaseSlug(caseParam)
     }
-  }, [allFeaturedProjects])
+  }, [allCaseStudyProjects])
 
   const handleOpenCaseStudy = useCallback((slug: string) => {
     setActiveCaseSlug(slug)
@@ -37,9 +54,9 @@ export default function Projects() {
 
   const activeProject = useMemo(
     () =>
-      allFeaturedProjects.find((project) => project.slug === activeCaseSlug) ??
+      allCaseStudyProjects.find((project) => project.slug === activeCaseSlug) ??
       null,
-    [allFeaturedProjects, activeCaseSlug],
+    [allCaseStudyProjects, activeCaseSlug],
   )
 
   return (

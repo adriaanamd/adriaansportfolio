@@ -1,10 +1,95 @@
 import type { ArchiveProject } from "./types"
 import inkwellImage from "../../project-assets/archive/inkwell.png"
+import meatLensImage from "../../project-assets/qa/meatlens-qa.png"
 import snapBoothImage from "../../project-assets/archive/snapbooth.png"
 import tahananImage from "../../project-assets/archive/tahanan.png"
 import warOfDotsImage from "../../project-assets/archive/wod.png"
 
 export const significantArchiveProjects: ArchiveProject[] = [
+  {
+    slug: "meatlens-qa",
+    title: "MeatLens model acceptance",
+    image: meatLensImage,
+    eyebrow: "QA case study · Classification workflow",
+    role: "Project Leader · QA & Acceptance Lead",
+    description:
+      "A structured acceptance pass for the inspection workflow, focused on input validation, classification confidence, and evidence around edge cases.",
+    highlights: [
+      "Enforced pre-scan DTI regulatory safety short-circuits, native camera blur rejection, and strict Pork-only specimen boundaries during Ikot Palengke wet-market trials.",
+      "Architected a 4-sharded Playwright E2E suite (capped at 110s per shard) alongside Java 21 Android Gradle JVM and WebView instrumentation gates in GitHub Actions.",
+      "Built an in-app ground-truth recalibration hub that recalculates live Precision, Recall, Accuracy, and F1-Score, earning formal certification from the Olongapo City Veterinary Office.",
+    ],
+    tags: ["Exploratory QA", "Data validation", "Acceptance"],
+    accent: "sage",
+    repoUrl:
+      "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
+    liveUrl: "https://meatlensv2.netlify.app",
+    paperLink: "/meatlens-research-paper.pdf",
+    caseStudy: {
+      track: "qa",
+      subtitle:
+        "Validating a 5-tier pork freshness CNN, pre-scan DTI compliance gates, and 4-sharded Playwright + Android CI pipelines.",
+      role: "Project Leader · QA & Acceptance Lead",
+      context:
+        "Ikot Palengke Wet-Market Trials · Olongapo City Veterinary Office",
+      focus: "Model Acceptance · 4-Shard Playwright CI · Blur & Scope Guards",
+      metrics: [
+        {
+          value: "4 Shards",
+          label:
+            "Deterministic Playwright E2E lanes capped at 110s per shard in GitHub Actions",
+        },
+        {
+          value: "5 Classes",
+          label:
+            "Veterinary-validated ground truth: Fresh, Acceptable, Not Fresh, Warning, Spoiled",
+        },
+        {
+          value: "Java 21 + Web",
+          label:
+            "Path-aware CI gating React, Express/OpenCV, and Android Gradle JVM/WebView suites",
+        },
+      ],
+      sections: [
+        {
+          eyebrow: "01 · Context & Risk",
+          title:
+            "Preventing bad captures, scope creep, and false confidence in wet-market inspections",
+          body: "In field trials for Olongapo City's Ikot Palengke program, two major quality risks emerged: web-camera limitations producing blurry or poorly lit specimen photos, and scope ambiguity around non-pork samples or failed sanitation conditions that AI alone cannot judge.",
+        },
+        {
+          eyebrow: "02 · Test Strategy & Coverage",
+          title:
+            "Multi-layered acceptance from regulatory pre-checks to sharded E2E and Android gates",
+          body: "Acceptance testing spanned deterministic workflow rules, model ground-truth evaluation, and cross-platform CI:",
+          bullets: [
+            "4-Sharded Playwright E2E Suite: Split into fast pull-request critical journeys (test:e2e:critical) and 4 deterministic full-coverage shards (test:e2e:full --shard=1/4..4/4), each bounded by a strict 110-second global timeout.",
+            "Android JVM & Instrumentation Gate: Added Gradle JVM architecture contracts (android/app/src/test) and ActivityScenario/WebView checks (android/app/src/androidTest) under Java 21.",
+            "In-App Ground Truth Recalibration: Built an Admin Datasets & Ground Truth workspace where manual inspector overrides immediately recalculate live Precision, Recall, Accuracy, and F1-Score.",
+          ],
+        },
+        {
+          eyebrow: "03 · Edge Cases & Key Findings",
+          title:
+            "Hardening camera blur prevention, regulatory short-circuits, and specimen boundaries",
+          body: "Field-informed QA passes drove four critical product revisions:",
+          bullets: [
+            "Pre-Scan Safety Short-Circuit: Verified that if any DTI compliance check (Stall Number, MIC proof, expiry date, storage, light color, or area cleanliness) is answered 'No', the app bypasses AI inference and immediately logs the inspection as spoiled.",
+            "Native camera routing & blur rejection: Replaced constrained web-camera streams with native phone camera invocation and a blur-prevention algorithm to reject out-of-focus captures before analysis.",
+            "Strict specimen delimitation: Enforced explicit Pork-only scope reminders and boundaries so beef, poultry, or fish samples are never misclassified under pork freshness weights.",
+          ],
+        },
+        {
+          eyebrow: "04 · Outcome & Release Confidence",
+          title:
+            "Certified by the Lead City Veterinarian for academic and field documentation",
+          body: "Backed by formal certification from Dr. Joseph Arnold C. Lopez (Lead Veterinarian, Olongapo City Veterinary Office) and zero-vulnerability runtime/dependency gates (security:audit & security:runtime), MeatLens achieved full acceptance for its 5-level classification workflow.",
+        },
+      ],
+      takeaway:
+        "Model acceptance is more than a confusion matrix—it means guarding what enters the lens, short-circuiting when regulatory safety fails, and proving every path in CI.",
+    },
+  },
   {
     slug: "inkwell",
     title: "Inkwell",

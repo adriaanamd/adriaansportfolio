@@ -1873,6 +1873,13 @@ h1 em, h2 em { color: var(--sage-dark); font-weight: 600; }
   height: 240px;
   margin: 20px 0 22px;
 }
+.dump-card .project-case-badge {
+  bottom: 34px;
+  right: 14px;
+}
+.dump-case-trigger {
+  margin-bottom: 14px;
+}
 .dump-card:hover .project-image {
   transform: scale(1.03);
 }
