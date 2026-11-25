@@ -16,8 +16,8 @@ export default function Contact() {
           full-time junior roles, OJT placement, and testing challenges where
           precision, test automation, and product reliability matter.
         </p>
-        <a href="mailto:aadimate55@gmail.com" className="button cream-button">
-          aadimate55@gmail.com <ArrowIcon />
+        <a href="mailto:amdimate43@gmail.com" className="button cream-button">
+          amdimate43@gmail.com <ArrowIcon />
         </a>
         <div className="social-links">
           <a
@@ -33,13 +33,6 @@ export default function Contact() {
             rel="noreferrer"
           >
             LinkedIn ↗
-          </a>
-          <a
-            href="https://facebook.com/philippine8129heavy"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Facebook ↗
           </a>
         </div>
       </div>
