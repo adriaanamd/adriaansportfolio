@@ -10,11 +10,21 @@ export type CaseStudyMetric = {
   label: string
 }
 
+export type CaseStudyMedia = {
+  src: string
+  alt: string
+  caption?: string
+}
+
 export type CaseStudySection = {
   eyebrow: string
   title: string
   body: string
   bullets?: string[]
+  image?: string
+  imageAlt?: string
+  imageCaption?: string
+  gallery?: CaseStudyMedia[]
 }
 
 export type CaseStudy = {

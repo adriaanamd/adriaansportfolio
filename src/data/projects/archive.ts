@@ -4,6 +4,9 @@ import meatLensImage from "../../project-assets/qa/meatlens-qa.png"
 import snapBoothImage from "../../project-assets/archive/snapbooth.png"
 import tahananImage from "../../project-assets/archive/tahanan.png"
 import warOfDotsImage from "../../project-assets/archive/wod.png"
+import warOfDotsCreditsImage from "../../project-assets/archive/wod-credits.jpg"
+import warOfDotsDiscordProofImage from "../../project-assets/archive/wod-discord-proof.jpg"
+import warOfDotsInitialImage from "../../project-assets/archive/wod-initial.jpg"
 
 export const significantArchiveProjects: ArchiveProject[] = [
   {
@@ -91,6 +94,112 @@ export const significantArchiveProjects: ArchiveProject[] = [
     },
   },
   {
+    slug: "war-of-dots",
+    title: "War of Dots landing page",
+    image: warOfDotsImage,
+    eyebrow: "Official Site Redesign & Beta QA · Game by TeaAndPython",
+    role: "Website Designer & Beta QA Tester",
+    description:
+      'Redesigned and built the official warofdots.net landing page by December for TeaAndPython\'s minimalist RTS (game created by TeaAndPython)—plus live multiplayer beta QA and an official in-game credit ("Website Design: Thalanas").',
+    highlights: [
+      "Redesigned the unusable original website into a dark tactical landing page shipped by December for TeaAndPython's Steam release.",
+      "Conducted live beta testing in real player environments under 200–400 concurrent players, authoring structured bug reports for unit interactions and UI/UX edge cases.",
+      'Rebuilt warofdots.net in React, TanStack Query, and Tailwind CSS with creator permission, earning the in-game credit "Website Design: Thalanas" (codebase remains proprietary, so no source repo is linked).',
+    ],
+    tags: [
+      "Live Beta QA",
+      "200–400 Concurrent Players",
+      "Defect Triage",
+      "React",
+      "TanStack Query",
+      "Tailwind CSS",
+    ],
+    accent: "wine",
+    liveUrl: "https://warofdots.net",
+    caseStudy: {
+      track: "engineering",
+      subtitle:
+        "Replacing an unusable initial page with a production-ready landing experience by December for TeaAndPython's minimalist RTS—alongside live beta QA at 200–400 concurrent players.",
+      role: "Website Designer & Beta QA Tester",
+      context:
+        "warofdots.net Redesign & Beta QA (Game by TeaAndPython)",
+      focus: "Before/After Landing Redesign · React + Tailwind · Live Beta QA",
+      metrics: [
+        {
+          value: "Steam Launch",
+          label:
+            "Production-ready landing page shipped by December for TeaAndPython's free-to-play Steam release",
+        },
+        {
+          value: "200–400",
+          label:
+            "Concurrent players during live multiplayer beta QA sessions and match stability checks",
+        },
+        {
+          value: "Thalanas",
+          label:
+            'Officially credited in-game ("Website Design: Thalanas") for rebuilding warofdots.net',
+        },
+      ],
+      sections: [
+        {
+          eyebrow: "01 · The Problem",
+          title:
+            "An initial site that was unusable and completely unfit for the game",
+          body: "War of Dots is a sharp, tactical real-time strategy game created and published on Steam by TeaAndPython—yet its original website failed the most basic product job. Visitors were dropped onto a bright, raw map screenshot with oversized black display text stamped across the frontline, a cramped translucent top bar anchored by an off-theme mug icon, zero explanation of gameplay, and no clear call-to-action to download or play.",
+          image: warOfDotsInitialImage,
+          imageAlt:
+            "Initial War of Dots website before the redesign, showing a bright map background, black title text over the frontline, and a cluttered top bar",
+          imageCaption:
+            "Before: The original landing page lacked visual hierarchy, readable contrast, game context, and a clear path to play.",
+        },
+        {
+          eyebrow: "02 · Redesign & Architecture",
+          title:
+            "Shipping a production-ready Steam landing page by December",
+          body: "While TeaAndPython developed the game itself, I received creator permission to scrap the original web layout and rebuild warofdots.net from scratch in React, TanStack Query, and Tailwind CSS—turning it into a dark, tactical landing page ready for Steam launch by December:",
+          bullets: [
+            "Tactical visual identity & contrast: Replaced the bright flat canvas with a darkened strategic map backdrop, bold gold stencil typography, and glowing red/blue dot accents true to the game's aesthetic.",
+            "Clear above-the-fold conversion flow: Anchored the hero around the 'COMMAND. CONQUER. DOMINATE.' tagline, an 'OUT NOW!' status pill, a prominent 'Available on Steam' free-to-play button, and direct 'Learn More' and 'Join Discord' actions.",
+            "Structured player onboarding: Organized navigation into About, Gameplay, How to Play, YouTube, and Discord so new players understand unit tactics before entering live matches.",
+          ],
+        },
+        {
+          eyebrow: "03 · Live Beta QA & Stability",
+          title:
+            "Validating unit behavior and UI edge cases under 200–400 concurrent players",
+          body: "Alongside rebuilding the official web presence, I contributed live multiplayer quality assurance for the game across ongoing updates:",
+          bullets: [
+            "High-concurrency field testing: Tested live matches in real player environments with 200–400 concurrent players to verify match stability across releases.",
+            "Reproducible defect reporting: Authored structured bug reports isolating tactical unit interaction defects, UI/UX inconsistencies, and edge-case failures.",
+          ],
+        },
+        {
+          eyebrow: "04 · Outcome & Proprietary Boundary",
+          title:
+            "Live on warofdots.net, supporting TeaAndPython's Steam release",
+          body: 'The redesigned warofdots.net shipped on schedule for TeaAndPython\'s Steam release and earned the official in-game credit "Website Design: Thalanas". While the repository is publicly visible, the codebase remains proprietary—so live source code links are intentionally omitted here in favor of the production site at warofdots.net.',
+          gallery: [
+            {
+              src: warOfDotsCreditsImage,
+              alt: 'War of Dots in-game credits screen showing "Website Design: Thalanas"',
+              caption:
+                'In-game credits screen in War of Dots listing "Website Design: Thalanas".',
+            },
+            {
+              src: warOfDotsDiscordProofImage,
+              alt: "Official War of Dots Discord message from Thalanas verifying the in-game Website Design credit",
+              caption:
+                "Official War of Dots Discord verification tying the Thalanas contributor handle to the in-game credit.",
+            },
+          ],
+        },
+      ],
+      takeaway:
+        "A game's website is its first playable impression. Replacing an unusable prototype with tactical hierarchy, Steam onboarding, and live beta QA turned warofdots.net into a front door worthy of the game.",
+    },
+  },
+  {
     slug: "inkwell",
     title: "Inkwell",
     image: inkwellImage,
@@ -165,29 +274,5 @@ export const significantArchiveProjects: ArchiveProject[] = [
     accent: "sand",
     repoUrl: "https://github.com/adriaanamd/tahanan",
     liveUrl: "https://tahanan-drab.vercel.app/",
-  },
-  {
-    slug: "war-of-dots",
-    title: "War of Dots",
-    image: warOfDotsImage,
-    eyebrow: "Multiplayer RTS · Live Beta QA & Official Site",
-    role: "Beta QA Tester & Credited Website Designer",
-    description:
-      'Contributed both live multiplayer quality assurance and frontend engineering for the minimalist real-time strategy game War of Dots—officially credited in-game under "website design: thalanas".',
-    highlights: [
-      "Conducted live beta testing in real player environments under 200–400 concurrent players, validating match stability across updates.",
-      "Authored structured, reproducible bug reports covering tactical unit interactions, UI/UX inconsistencies, and edge-case failures.",
-      'Rebuilt the official warofdots.net website in React, TanStack Query, and Tailwind CSS with creator permission, earning the in-game credit "website design: thalanas".',
-    ],
-    tags: [
-      "Live Beta QA",
-      "200–400 Concurrent Players",
-      "Defect Triage",
-      "React",
-      "TanStack Query",
-      "Tailwind CSS",
-    ],
-    accent: "wine",
-    liveUrl: "https://warofdots.net",
   },
 ]

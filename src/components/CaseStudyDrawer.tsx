@@ -195,7 +195,7 @@ export default function CaseStudyDrawer({
                   className="button primary case-cta-link"
                 >
                   <span className="live-demo-dot" aria-hidden="true" />
-                  Live demo <ExternalIcon />
+                  {projectUrl ? "Live demo" : "Visit live site"} <ExternalIcon />
                 </a>
               )}
               {project.paperLink && (
@@ -261,6 +261,44 @@ export default function CaseStudyDrawer({
                 <p className="eyebrow">{section.eyebrow}</p>
                 <h3>{section.title}</h3>
                 <p>{section.body}</p>
+                {section.image && (
+                  <figure className="case-section-figure">
+                    <div className={`case-section-frame ${project.accent}`}>
+                      <img
+                        src={section.image}
+                        alt={section.imageAlt ?? section.title}
+                        className="case-section-image"
+                        loading="lazy"
+                      />
+                    </div>
+                    {section.imageCaption && (
+                      <figcaption className="case-section-caption">
+                        {section.imageCaption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
+                {section.gallery && section.gallery.length > 0 && (
+                  <div className="case-section-gallery">
+                    {section.gallery.map((item) => (
+                      <figure className="case-section-figure" key={item.src}>
+                        <div className={`case-section-frame ${project.accent}`}>
+                          <img
+                            src={item.src}
+                            alt={item.alt}
+                            className="case-section-image case-section-proof-image"
+                            loading="lazy"
+                          />
+                        </div>
+                        {item.caption && (
+                          <figcaption className="case-section-caption">
+                            {item.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ))}
+                  </div>
+                )}
                 {section.bullets && section.bullets.length > 0 && (
                   <ul className="case-section-bullets">
                     {section.bullets.map((bullet) => (
