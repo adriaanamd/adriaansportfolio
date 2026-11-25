@@ -81,7 +81,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
   },
   {
     slug: "shekinah-qa",
-    title: "Shekinah",
+    title: "Project Shekinah",
     image: shekinahImage,
     eyebrow: "QA & systems case study · Worship presentation engine",
     description:
@@ -127,7 +127,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
           eyebrow: "01 · Context & Risk",
           title:
             "Replacing ProPresenter on modest church hardware without dropping a live worship cue",
-          body: "Built as a full-scale ProPresenter replacement for I Care Balaybay Mountain Church and I Care SBMA, Shekinah had to deliver a complete live worship presentation workflow—reusable songs with continuous-text reflow editing, ordered sermon decks, file-backed image and looping MP4/H.264 backgrounds, a responsive 1–6 column operator cue grid, and full-screen dual-monitor audience output—while running reliably on two-core Intel Celeron N4000 Windows PCs with UHD 600 graphics and 4 GB of RAM. Unlike cloud-backed web apps, an offline native media engine on constrained hardware has zero margin for memory leaks, UI stalls, or accidental live-output mutations.",
+          body: "Built as a full-scale ProPresenter replacement for I Care Balaybay Mountain Church and I Care SBMA, Project Shekinah had to deliver a complete live worship presentation workflow—reusable songs with continuous-text reflow editing, ordered sermon decks, file-backed image and looping MP4/H.264 backgrounds, a responsive 1–6 column operator cue grid, and full-screen dual-monitor audience output—while running reliably on two-core Intel Celeron N4000 Windows PCs with UHD 600 graphics and 4 GB of RAM. Unlike cloud-backed web apps, an offline native media engine on constrained hardware has zero margin for memory leaks, UI stalls, or accidental live-output mutations.",
         },
         {
           eyebrow: "02 · Systems Architecture & SWE Design",
@@ -166,7 +166,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
           eyebrow: "05 · Outcome & Release Confidence",
           title:
             "A deterministic, low-footprint native worship engine proven in CI",
-          body: "By pairing clean C++20/Qt 6 architectural boundaries with blocking CTest gates for memory ceilings, cue-to-output latency, and operator UI isolation under -Werror, Shekinah delivers a full-scale ProPresenter workflow that holds steady on 4 GB Celeron hardware.",
+          body: "By pairing clean C++20/Qt 6 architectural boundaries with blocking CTest gates for memory ceilings, cue-to-output latency, and operator UI isolation under -Werror, Project Shekinah delivers a full-scale ProPresenter workflow that holds steady on 4 GB Celeron hardware.",
         },
       ],
       takeaway:
