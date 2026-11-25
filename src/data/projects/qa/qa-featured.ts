@@ -83,14 +83,14 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     slug: "shekinah-qa",
     title: "Shekinah",
     image: shekinahImage,
-    eyebrow: "QA case study · Worship presentation system",
+    eyebrow: "QA & systems case study · Worship presentation engine",
     description:
-      "A full-scale native C++20 and Qt 6 ProPresenter replacement built for I Care Balaybay Mountain Church and I Care SBMA. Engineered and stress-tested under strict TDD to run live worship lyrics, sermon decks, looping video backgrounds, and dual-monitor audience output on Celeron N4000-class Windows hardware with 4 GB RAM.",
+      "A full-scale native C++20 and Qt 6 ProPresenter replacement architected and stress-tested under strict TDD for I Care Balaybay Mountain Church and I Care SBMA. Engineered with decoupled domain/media layers, SQLite storage, and a staged memory governor to run live worship lyrics, sermon decks, looping video backgrounds, and dual-monitor audience output on 4 GB Celeron N4000 Windows hardware.",
     tags: [
+      "C++20 & Qt 6",
       "Catch2 & CTest",
       "Qt 6 Test",
       "Performance & Memory QA",
-      "C++20",
       "SQLite",
     ],
     link: "https://github.com/icarechurch/Shekinah",
@@ -99,11 +99,12 @@ export const qaFeaturedProjects: FeaturedProject[] = [
     caseStudy: {
       track: "qa",
       subtitle:
-        "Enforcing a <300 MB process working-set ceiling, ≤100 ms p95 live cue latency, and 9-lane Catch2 + Qt Test verification for a native C++20 ProPresenter replacement on Celeron N4000 hardware.",
+        "Architecting a native C++20/Qt 6 ProPresenter replacement and enforcing a <300 MB working-set ceiling, ≤100 ms p95 live cue latency, and 9-lane Catch2 + Qt Test verification on Celeron N4000 hardware.",
       role: "Lead Software Engineer & Test Architect",
       context:
         "I Care Balaybay Mountain Church & I Care SBMA · ProPresenter Replacement",
-      focus: "9 CTest Suites · N4000 Hardware Gate · <300 MB Resource Governor",
+      focus:
+        "C++20/Qt 6 Architecture · 9 CTest Suites · <300 MB Resource Governor",
       metrics: [
         {
           value: "9 Suites",
@@ -126,13 +127,24 @@ export const qaFeaturedProjects: FeaturedProject[] = [
           eyebrow: "01 · Context & Risk",
           title:
             "Replacing ProPresenter on modest church hardware without dropping a live worship cue",
-          body: "Built as a full-scale ProPresenter replacement for I Care Balaybay Mountain Church and I Care SBMA, Shekinah had to deliver a complete live worship presentation workflow—reusable songs with continuous-text reflow editing, ordered sermon decks, file-backed image and looping MP4/H.264 backgrounds, a responsive 1–6 column operator cue grid, and full-screen dual-monitor audience output—while running reliably on two-core Intel Celeron N4000 Windows PCs with UHD 600 graphics and 4 GB of RAM.",
+          body: "Built as a full-scale ProPresenter replacement for I Care Balaybay Mountain Church and I Care SBMA, Shekinah had to deliver a complete live worship presentation workflow—reusable songs with continuous-text reflow editing, ordered sermon decks, file-backed image and looping MP4/H.264 backgrounds, a responsive 1–6 column operator cue grid, and full-screen dual-monitor audience output—while running reliably on two-core Intel Celeron N4000 Windows PCs with UHD 600 graphics and 4 GB of RAM. Unlike cloud-backed web apps, an offline native media engine on constrained hardware has zero margin for memory leaks, UI stalls, or accidental live-output mutations.",
         },
         {
-          eyebrow: "02 · Test Strategy & Coverage",
+          eyebrow: "02 · Systems Architecture & SWE Design",
+          title:
+            "Engineering a testable C++20/Qt 6 desktop engine for deterministic low-RAM execution",
+          body: "Extreme hardware constraints meant testability had to be engineered into the software architecture from day one rather than bolted on afterward:",
+          bullets: [
+            "Layered C++20 Boundaries & Feature-Sliced Qt UI: Isolated pure Qt-independent presentation domain rules (presentation_engine) from application services (presentation_service, song_reflow, song_text_importer), SQLite storage repositories, media decoding/caching, and Feature-Sliced Qt 6 widgets so core state transitions run headless in milliseconds.",
+            "Decoupled Operator & Dual-Monitor Program Pipeline: Separated operator preview, editing (ReflowEditorDialog, floating Inspector), and service-order navigation from the live AudienceOutput renderer so explicit cue activation, Clear, and Blackout transitions remain deterministic under live service pressure.",
+            "Local-First SQLite & Bounded Resource Management: Built transactional SQLite repositories with content-hashed media deduplication alongside a dedicated ResourceGovernor and byte-bounded texture/media pools (36 MiB active still-image cap) to prevent runaway VRAM/RAM growth on 4 GB machines.",
+          ],
+        },
+        {
+          eyebrow: "03 · Test Strategy & Coverage",
           title:
             "Strict TDD across 9 CTest architectural lanes and an automated N4000 benchmark executable",
-          body: "To prevent Qt UI state, SQLite persistence, and live media decoding from coupling into untestable desktop code, the C++20 codebase was split into strict domain, application, storage, media, and Feature-Sliced Qt UI boundaries—each locked down by dedicated Catch2 v3 and Qt Test executables:",
+          body: "Because live dual-monitor media playback, SQLite persistence, and memory ceilings fail in subtle, hardware-dependent ways, every architectural boundary was locked down by dedicated Catch2 v3 and Qt Test executables:",
           bullets: [
             "9 Blocking CTest Executables: Covered smoke, test-support fixtures, pure Qt-independent domain logic (presentation_engine_test), application contracts (presentation_service, song_reflow, song_text_importer, resource_governor), SQLite repositories and atomic asset/sermon importers, media caches, 13 Qt Test UI widget suites, operator-to-output E2E, and memory budget gates.",
             "Operator-to-Output E2E Verification (operator_to_output_test.cpp): Programmatically drives ShekinahWindow with QTest—creating a SQLite project folder, importing sermon slides, activating library rows, left-clicking cue cards, and asserting that AudienceOutput enters ProgramMode::cue with the rendered slide before verifying Clear and Blackout recovery.",
@@ -140,25 +152,25 @@ export const qaFeaturedProjects: FeaturedProject[] = [
           ],
         },
         {
-          eyebrow: "03 · Edge Cases & Key Findings",
+          eyebrow: "04 · Edge Cases & Key Findings",
           title:
             "Staged memory governance, atomic SQLite asset rollbacks, and non-live editing isolation",
-          body: "Automated contract, UI, and performance tests targeted the failure modes that crash or stall live church services:",
+          body: "Automated contract, UI, and performance tests targeted the highest-severity failure modes that crash or stall live church services:",
           bullets: [
-            "Staged ResourceGovernor & Byte-Bounded Pools (resource_governor_test.cpp, memory_budget_test.cpp): Capped active still-image textures at 36 MiB while sampling process working set every second—purging non-live caches at 220 MB, cancelling queued imports and releasing inactive media at 250 MB, and blocking new live video loads at 270 MB before the 300 MB hard gate.",
+            "Staged ResourceGovernor & Byte-Bounded Pools (resource_governor_test.cpp, memory_budget_test.cpp): Verified that the 36 MiB active still-image cap and 1-second process working-set sampler deterministically purge non-live caches at 220 MB, cancel queued imports and release inactive media at 250 MB, and block new live video loads at 270 MB before hitting the 300 MB hard gate.",
             "Live Program Isolation & UTF-8 Reflow Integrity: Verified that selecting service-order items, dragging assets onto songs or slide ranges, opening the right-click floating Inspector, or editing continuous lyric text with Ctrl+Enter slide-break markers in ReflowEditorDialog never mutates the live audience monitor until an operator explicitly left-clicks a cue.",
             "Content-Hashed Deduplication & Transactional Rollback: Confirmed that importing identical media reuses existing content-hash asset records, removing service-order items never deletes underlying reusable songs or media files, and failed imports roll back SQLite metadata atomically.",
           ],
         },
         {
-          eyebrow: "04 · Outcome & Release Confidence",
+          eyebrow: "05 · Outcome & Release Confidence",
           title:
             "A deterministic, low-footprint native worship engine proven in CI",
-          body: "By treating memory ceilings, cue-to-output latency, and operator UI isolation as blocking CTest gates under -Werror, Shekinah delivers a full-scale ProPresenter workflow in native C++20/Qt 6 that holds steady on 4 GB Celeron hardware.",
+          body: "By pairing clean C++20/Qt 6 architectural boundaries with blocking CTest gates for memory ceilings, cue-to-output latency, and operator UI isolation under -Werror, Shekinah delivers a full-scale ProPresenter workflow that holds steady on 4 GB Celeron hardware.",
         },
       ],
       takeaway:
-        "When building live event software for constrained hardware, performance and memory budgets cannot be afterthoughts—they have to be executable test contracts enforced on every build.",
+        "When building live event software for constrained hardware, architecture and QA are inseparable—clean C++20 boundaries make performance, memory budgets, and UI isolation executable test contracts enforced on every build.",
     },
   },
   {
