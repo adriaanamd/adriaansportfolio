@@ -14,6 +14,10 @@ const simpleIcon = (slug: string) =>
 
 const customIcons = {
   aitum: "https://aitum.tv/logo.svg",
+  antigravity:
+    "https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/antigravity-color.svg",
+  codex:
+    "https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/codex-color.svg",
   ndi: "https://2136244485-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoUOsQwQ9oPpQ8LFlxOpLI%2Fuploads%2F1U4sO7iJ8fZEcxyRfpHb%2FPicture%202.png?alt=media&token=d4f3e033-ae57-478a-8320-2b5b459d2a49",
   photoshop:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
@@ -76,6 +80,19 @@ export const stack: StackGroup[] = [
       { name: "PostgreSQL", icon: simpleIcon("postgresql") },
       { name: "MySQL", icon: simpleIcon("mysql") },
       { name: "SQLite", icon: simpleIcon("sqlite") },
+    ],
+  },
+  {
+    group: "AI CODING ASSISTANTS",
+    items: [
+      {
+        name: "OpenAI Codex (App & CLI)",
+        icon: customIcons.codex,
+        iconBackground: "#ffffff",
+      },
+      { name: "Google Antigravity (App)", icon: customIcons.antigravity },
+      { name: "Claude Code (CLI)", icon: simpleIcon("claudecode") },
+      { name: "OpenCode (CLI)", icon: simpleIcon("opencode") },
     ],
   },
   {
