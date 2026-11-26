@@ -1,6 +1,5 @@
 import type { FeaturedProject } from "../types"
 import camFleaImage from "../../../project-assets/qa/camflea-qa.png"
-import myLightDrugstoreImage from "../../../project-assets/qa/mylightdrugstore-qa.png"
 import shekinahImage from "../../../project-assets/qa/shekinah-qa.png"
 
 export const qaFeaturedProjects: FeaturedProject[] = [
@@ -181,94 +180,6 @@ export const qaFeaturedProjects: FeaturedProject[] = [
       ],
       takeaway:
         "When building live event software for constrained hardware, architecture and QA are inseparable—clean C++20 boundaries make performance, memory budgets, and UI isolation executable test contracts enforced on every build.",
-    },
-  },
-  {
-    slug: "mylightdrugstore-qa",
-    title: "MyLightDrugstore audit",
-    image: myLightDrugstoreImage,
-    eyebrow: "QA case study · Legacy system",
-    description:
-      "A structured pass through a legacy PHP application that is refactored by me, focused on critical transaction paths, data integrity, reproducible defects, and safe regression coverage.",
-    tags: [
-      "PHPUnit",
-      "PHPStan",
-      "Playwright",
-      "Vitest",
-      "PHP",
-      "Laravel",
-      "TypeScript",
-      "React",
-      "TanStack Start",
-      "Tailwind CSS",
-      "MySQL",
-      "SQLite",
-    ],
-    link: "https://github.com/adriaanamd/MyLightDrugstore",
-    accent: "sand",
-    caseStudy: {
-      track: "qa",
-      subtitle:
-        "Auditing a 2009–2012 legacy PHP pharmacy system and verifying its refactor into a PHPStan Level 9 Laravel modular monolith.",
-      role: "QA Auditor & Refactoring Engineer",
-      context: "2009–2012 Legacy PHP Audit → Laravel /api/v1 Refactor",
-      focus:
-        "Legacy Defect Audit · Atomic Stock/Sales · PHPStan Level 9 + 5 Test Suites",
-      metrics: [
-        {
-          value: "Level 9",
-          label:
-            "PHPStan static analysis + 5 automated suites (Unit, Arch, Foundation, Business, Transport)",
-        },
-        {
-          value: "2009–2012",
-          label:
-            "Legacy mysql_* procedural scripts audited across duplicated admin, staff & pharmacy folders",
-        },
-        {
-          value: "AES + ULID",
-          label:
-            "Encrypted /api/v1 payloads, string-decimal currency, and req_ ULID error tracing",
-        },
-      ],
-      sections: [
-        {
-          eyebrow: "01 · Context & Risk",
-          title:
-            "Untangling a 15-year-old pharmacy codebase with duplicated pages and removed mysql_* calls",
-          body: "Originally written between 2009 and 2012, MyLightDrugstore existed as two overlapping procedural PHP copies (MyLightDrugstore/ with separate administrator/ and staff/ directories, and pharmacy/) relying on removed mysql_* functions and repeated conf.php files. Auditing the legacy behavior was essential to refactor it into a modern Laravel modular monolith + React FSD frontend without losing a single medicine lot or sales rule.",
-        },
-        {
-          eyebrow: "02 · Test Strategy & Coverage",
-          title:
-            "Contract-first API specification paired with 5 CI test suites",
-          body: "I audited every legacy screen and mapped its exact behavior into a formal /api/v1 contract (API-DOCS.md) across six strict domain modules (Identity, Catalog, Inventory, Sales, Users, Reporting):",
-          bullets: [
-            "5 Automated Test Suites: Built Unit, Architecture, FeatureFoundation, FeatureBusiness, and FeatureTransport test suites running against SQLite locally and MySQL 8 / MariaDB in CI.",
-            "Static & Runtime Hardening: Enforced PHPStan Level 9 analysis and pinned CI to PHP 8.5.12, explicitly rejecting runtimes vulnerable to PHP2Shell (CVE-2026-109618 and CVE-2026-109619).",
-            "Postman & Transport Contract Checks: Validated AES-256-GCM encrypted request/response envelopes (/transport/public-key + X-Transport-Key) and X-Request-ID ULID correlation headers.",
-          ],
-        },
-        {
-          eyebrow: "03 · Edge Cases & Key Findings",
-          title:
-            "Eliminating floating-point money drift, race conditions, and cross-table leakage",
-          body: "The legacy audit and new architecture tests caught and prevented critical financial and inventory defects:",
-          bullets: [
-            "Atomic sale & stock-lot transactions: Ensured Sales calls Inventory's application service inside a single database transaction, returning explicit 409 insufficient_stock or idempotency_key_reused conflicts instead of partial writes.",
-            "String-decimal money representation: Replaced floating-point currency math with exact decimal strings (e.g., '12.50') and rejected unknown fields or invalid enums with strict 422 validation_failed details.",
-            "Zero schema leakage: Enforced architecture rules so modules never mutate each other's tables directly and 500 responses never leak SQL, stack traces, or internal column names.",
-          ],
-        },
-        {
-          eyebrow: "04 · Outcome & Release Confidence",
-          title:
-            "A 2009 family pharmacy system brought up to modern financial-grade QA standards",
-          body: "What began as a fragile procedural PHP app with scattered conf.php credentials is now governed by a documented /api/v1 contract, encrypted transport, deterministic error codes, and blocking architecture and business test suites.",
-        },
-      ],
-      takeaway:
-        "Refactoring legacy software starts with respect for the original domain—auditing every quirk of the 2009 workflows first so the new modular monolith preserves what worked while eliminating everything that could corrupt the ledger.",
     },
   },
 ]
