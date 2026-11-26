@@ -1,5 +1,6 @@
 import type { FeaturedProject } from "../types"
 import camFleaImage from "../../../project-assets/qa/camflea-qa.png"
+import scan2BorrowImage from "../../../project-assets/qa/scan2borrow-qa.jpg"
 import shekinahImage from "../../../project-assets/qa/shekinah-qa.png"
 
 export const qaFeaturedProjects: FeaturedProject[] = [
@@ -180,6 +181,63 @@ export const qaFeaturedProjects: FeaturedProject[] = [
       ],
       takeaway:
         "When building live event software for constrained hardware, architecture and QA are inseparable—clean C++20 boundaries make performance, memory budgets, and UI isolation executable test contracts enforced on every build.",
+    },
+  },
+  {
+    slug: "scan2borrow-qa",
+    title: "Scan2Borrow",
+    image: scan2BorrowImage,
+    eyebrow: "QA & refactor case study · Library system",
+    description:
+      "A full-scale refactor and QA overhaul of a legacy 2009-style procedural PHP library system for Binalbagan Catholic College, built in collaboration with a friend in Binalbagan, Negros Occidental—modernized into a framework-free PHP 8.5 modular monolith and vanilla ES-module frontend guarded by PHPUnit, PHPStan Level 9, and Node contract tests.",
+    tags: [
+      "PHPUnit",
+      "PHPStan Level 9",
+      "Node Test",
+      "PHP 8.5",
+      "Vanilla JS (ESM)",
+      "MySQL",
+      "SQLite",
+      "Modular Monolith",
+    ],
+    link: "https://github.com/adriaanamd/scan2borrow",
+    accent: "sand",
+    caseStudy: {
+      track: "qa",
+      subtitle:
+        "Refactoring a 2009-style procedural PHP library system into a framework-free PHP 8.5.12+ modular monolith and feature-owned ES-module frontend under strict automated QA.",
+      role: "QA Architect & Co-Refactoring Engineer",
+      context:
+        "Binalbagan Catholic College · Collab with Friend in Binalbagan, Negros Occidental",
+      focus:
+        "Legacy 2009 Refactor · 139 PHPUnit + 54 Node Suites · PHPStan Level 9",
+      metrics: [
+        {
+          value: "139 Suites",
+          label:
+            "PHPUnit Unit & Feature tests across 18 backend domains, CSRF, routes, and MySQL/SQLite schemas",
+        },
+        {
+          value: "Level 9",
+          label:
+            "PHPStan strict-rules static analysis pinned to PHP2Shell-patched PHP 8.5.12+",
+        },
+        {
+          value: "54 Contracts",
+          label:
+            "Native Node frontend module & served-template parity tests guarding 290px–desktop layouts",
+        },
+      ],
+      sections: [
+        {
+          eyebrow: "01 · Context & Risk",
+          title:
+            "Untangling a 2009-style procedural PHP library codebase built with a Binalbagan collaborator",
+          body: "Developed in collaboration with a friend in Binalbagan, Negros Occidental for Binalbagan Catholic College, Scan2Borrow began as 72 files (11,008 lines) of classic 2009-style procedural root PHP scripts—mixed HTML/SQL entry points like adboard.php, adstud.php, books_api.php, guest_*.php, and a 1,024-line includes/functions.php—where rewriting workflows risked breaking active library circulation and MySQL compatibility.",
+        },
+      ],
+      takeaway:
+        "Modernizing a 2009-style PHP codebase does not require a heavy framework—clear architectural boundaries and automated contract tests make full-scale refactoring predictable.",
     },
   },
 ]
