@@ -1,25 +1,40 @@
 import { useEffect, useRef, useState } from "react"
+
 import { createPortal } from "react-dom"
 
 import type { CaseStudyProject } from "../data/projects/types"
+
 import ArrowIcon from "./ArrowIcon"
+
+import CodebaseLinks from "./CodebaseLinks"
+
 import ExternalIcon from "./ExternalIcon"
 
 export default function CaseStudyDrawer({
   project,
+
   allProjects,
+
   onSelectProject,
+
   onClose,
 }: {
   project: CaseStudyProject | null
+
   allProjects: CaseStudyProject[]
+
   onSelectProject: (slug: string) => void
+
   onClose: () => void
 }) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
+
   const closeButtonRef = useRef<HTMLButtonElement | null>(null)
+
   const wasOpenRef = useRef(false)
+
   const [copied, setCopied] = useState(false)
+
   const isOpen = Boolean(project)
 
   useEffect(() => {
@@ -28,13 +43,19 @@ export default function CaseStudyDrawer({
     }
 
     const html = document.documentElement
+
     const body = document.body
+
     const scrollY = window.scrollY
+
     const prevHtmlOverflowY = html.style.overflowY
+
     const prevBodyPaddingRight = body.style.paddingRight
 
     const scrollbarWidth = window.innerWidth - html.clientWidth
+
     html.style.overflowY = "hidden"
+
     if (scrollbarWidth > 0) {
       body.style.paddingRight = `${scrollbarWidth}px`
     }
@@ -43,7 +64,9 @@ export default function CaseStudyDrawer({
 
     return () => {
       html.style.overflowY = prevHtmlOverflowY
+
       body.style.paddingRight = prevBodyPaddingRight
+
       if (window.scrollY !== scrollY) {
         window.scrollTo({ top: scrollY, behavior: "instant" })
       }
@@ -62,12 +85,14 @@ export default function CaseStudyDrawer({
     }
 
     window.addEventListener("keydown", handleKeyDown)
+
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [isOpen, onClose])
 
   useEffect(() => {
     if (!project) {
       wasOpenRef.current = false
+
       return
     }
 
@@ -80,6 +105,7 @@ export default function CaseStudyDrawer({
     }
 
     wasOpenRef.current = true
+
     setCopied(false)
   }, [project])
 
@@ -88,18 +114,28 @@ export default function CaseStudyDrawer({
   }
 
   const { caseStudy } = project
-  const liveDemoUrl = "liveDemo" in project ? project.liveDemo : project.liveUrl
-  const projectUrl = "link" in project ? project.link : project.repoUrl
+
+  const isFeatured = "link" in project
+
+  const liveDemoUrl = isFeatured ? project.liveDemo : project.liveUrl
+
+  const projectUrl = isFeatured ? project.link : project.repoUrl
+
+  const projectLinkLabel = isFeatured ? project.linkLabel : project.repoLabel
+
   const currentIndex = allProjects.findIndex(
     (item) => item.slug === project.slug,
   )
+
   const effectiveIndex = currentIndex >= 0 ? currentIndex : 0
+
   const prevProject =
     allProjects.length > 1
       ? effectiveIndex > 0
         ? allProjects[effectiveIndex - 1]
         : allProjects[allProjects.length - 1]
       : null
+
   const nextProject =
     allProjects.length > 1
       ? effectiveIndex < allProjects.length - 1
@@ -110,9 +146,13 @@ export default function CaseStudyDrawer({
   const handleCopyLink = async () => {
     try {
       const shareUrl = new URL(window.location.href)
+
       shareUrl.searchParams.set("case", project.slug)
+
       await navigator.clipboard.writeText(shareUrl.toString())
+
       setCopied(true)
+
       window.setTimeout(() => setCopied(false), 2000)
     } catch {
       setCopied(false)
@@ -195,7 +235,8 @@ export default function CaseStudyDrawer({
                   className="button primary case-cta-link"
                 >
                   <span className="live-demo-dot" aria-hidden="true" />
-                  {projectUrl ? "Live demo" : "Visit live site"} <ExternalIcon />
+                  {projectUrl ? "Live demo" : "Visit live site"}{" "}
+                  <ExternalIcon />
                 </a>
               )}
               {project.paperLink && (
@@ -208,28 +249,15 @@ export default function CaseStudyDrawer({
                   Research paper <ExternalIcon />
                 </a>
               )}
-              {projectUrl && (
-                <a
-                  href={projectUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button secondary case-cta-link"
-                >
-                  {liveDemoUrl ? "View repository" : "Open project"}{" "}
-                  <ExternalIcon />
-                </a>
-              )}
-              {project.extraLinks?.map((extra) => (
-                <a
-                  key={extra.url}
-                  href={extra.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button secondary case-cta-link"
-                >
-                  {extra.label} <ExternalIcon />
-                </a>
-              ))}
+              <CodebaseLinks
+                key={project.slug}
+                primaryUrl={projectUrl}
+                primaryLabel={projectLinkLabel}
+                singleLabel="View repository"
+                multiLabel="View repositories"
+                extraLinks={project.extraLinks}
+                variant="drawer"
+              />
             </div>
           </div>
 
@@ -355,6 +383,7 @@ export default function CaseStudyDrawer({
         </div>
       </aside>
     </div>,
+
     document.body,
   )
 }

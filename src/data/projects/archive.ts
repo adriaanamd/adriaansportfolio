@@ -48,9 +48,22 @@ export const significantArchiveProjects: ArchiveProject[] = [
     repoUrl:
       "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
 
+    repoLabel: "Main application",
+
     liveUrl: "https://meatlensv2.netlify.app",
 
     paperLink: "/meatlens-research-paper.pdf",
+
+    extraLinks: [
+      {
+        label: "Main model training",
+        url: "https://github.com/MeatLens-Freshness-Inspector/meatlens-training-1",
+      },
+      {
+        label: "Secondary model training",
+        url: "https://github.com/MeatLens-Freshness-Inspector/meatlens-training-2",
+      },
+    ],
 
     caseStudy: {
       track: "qa",

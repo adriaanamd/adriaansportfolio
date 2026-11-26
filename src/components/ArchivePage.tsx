@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router"
 import type { ArchiveProject, CaseStudy } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
 import CaseStudyDrawer from "./CaseStudyDrawer"
+import CodebaseLinks from "./CodebaseLinks"
 import ExternalIcon from "./ExternalIcon"
 import ProjectVisual from "./ProjectVisual"
 import ScrollFade from "./ScrollFade"
@@ -20,6 +21,7 @@ export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
   )
 
   const [activeCaseSlug, setActiveCaseSlug] = useState<string | null>(null)
+  const [openMenuSlug, setOpenMenuSlug] = useState<string | null>(null)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -78,7 +80,12 @@ export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
             const hasCaseStudy = Boolean(project.caseStudy)
 
             return (
-              <article className="dump-card glass" key={project.slug}>
+              <article
+                className={`dump-card glass${
+                  openMenuSlug === project.slug ? " is-menu-open" : ""
+                }`}
+                key={project.slug}
+              >
                 <div className="dump-card-top">
                   <span className="dump-card-index">
                     {String(index + 1).padStart(2, "0")} · {project.role}
@@ -172,16 +179,24 @@ export function ArchivePage({ projects }: { projects: ArchiveProject[] }) {
                       Research paper <ExternalIcon />
                     </a>
                   )}
-                  {project.repoUrl && (
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="dump-open"
-                    >
-                      View repository <ArrowIcon />
-                    </a>
-                  )}
+                  <CodebaseLinks
+                    primaryUrl={project.repoUrl}
+                    primaryLabel={project.repoLabel}
+                    singleLabel="View repository"
+                    multiLabel="View repositories"
+                    extraLinks={project.extraLinks}
+                    variant="archive"
+                    singleIcon="arrow"
+                    onOpenChange={(open) =>
+                      setOpenMenuSlug((prev) =>
+                        open
+                          ? project.slug
+                          : prev === project.slug
+                            ? null
+                            : prev,
+                      )
+                    }
+                  />
                 </div>
               </article>
             )

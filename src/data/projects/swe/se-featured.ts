@@ -109,6 +109,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
       "TensorFlow",
     ],
     link: "https://github.com/MeatLens-Freshness-Inspector/meatlens-application",
+    linkLabel: "Main application",
     liveDemo: "https://meatlensv2.netlify.app",
     paperLink: "/meatlens-research-paper.pdf",
     extraLinks: [
@@ -205,6 +206,7 @@ export const engineeringFeaturedProjects: FeaturedProject[] = [
       "SQLite",
     ],
     link: "https://github.com/adriaanamd/mathventure",
+    linkLabel: "Main repository",
     liveDemo: "https://mathventureprototype1.netlify.app/",
     extraLinks: [
       {

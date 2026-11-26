@@ -1,5 +1,7 @@
+import { useState } from "react"
 import type { FeaturedProject } from "../data/projects/types"
 import ArrowIcon from "./ArrowIcon"
+import CodebaseLinks from "./CodebaseLinks"
 import ExternalIcon from "./ExternalIcon"
 import ProjectVisual from "./ProjectVisual"
 
@@ -11,8 +13,10 @@ export default function ProjectCard({
   index: number
   onOpenCaseStudy: (slug: string) => void
 }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
-    <article className="project-card glass">
+    <article className={`project-card glass${menuOpen ? " is-menu-open" : ""}`}>
       <div
         className="project-visual-trigger"
         role="button"
@@ -78,25 +82,15 @@ export default function ProjectCard({
                 Research paper <ExternalIcon />
               </a>
             )}
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-link"
-            >
-              {project.liveDemo ? "View code" : "View project"} <ExternalIcon />
-            </a>
-            {project.extraLinks?.map((extra) => (
-              <a
-                key={extra.url}
-                href={extra.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-link"
-              >
-                {extra.label} <ExternalIcon />
-              </a>
-            ))}
+            <CodebaseLinks
+              primaryUrl={project.link}
+              primaryLabel={project.linkLabel}
+              singleLabel="View code"
+              multiLabel="View code"
+              extraLinks={project.extraLinks}
+              variant="card"
+              onOpenChange={setMenuOpen}
+            />
           </div>
         </div>
       </div>
