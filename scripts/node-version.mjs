@@ -1,4 +1,7 @@
-const MINIMUM_NODE_VERSION = Object.freeze({ major: 24, minor: 22, patch: 1 })
+const SUPPORTED_MAJOR_FLOORS = Object.freeze({
+  24: Object.freeze({ minor: 22, patch: 1 }),
+  26: Object.freeze({ minor: 13, patch: 1 }),
+})
 
 function parseNodeVersion(version) {
   const match = /^(\d+)\.(\d+)\.(\d+)/.exec(version)
@@ -16,22 +19,23 @@ function parseNodeVersion(version) {
 
 export function isSupportedNodeVersion(version) {
   const parsed = parseNodeVersion(version)
+  const floor = parsed ? SUPPORTED_MAJOR_FLOORS[parsed.major] : undefined
 
-  if (!parsed || parsed.major !== MINIMUM_NODE_VERSION.major) {
+  if (!parsed || !floor) {
     return false
   }
 
-  if (parsed.minor !== MINIMUM_NODE_VERSION.minor) {
-    return parsed.minor > MINIMUM_NODE_VERSION.minor
+  if (parsed.minor !== floor.minor) {
+    return parsed.minor > floor.minor
   }
 
-  return parsed.patch >= MINIMUM_NODE_VERSION.patch
+  return parsed.patch >= floor.patch
 }
 
 export function assertSupportedNodeVersion(version = process.versions.node) {
   if (!isSupportedNodeVersion(version)) {
     throw new Error(
-      `Unsupported Node.js version ${version}. Use Node.js 24.22.1 or a newer patched 24.x release.`,
+      `Unsupported Node.js version ${version}. Use Node.js 24.22.1+ (24.x) or 26.13.1+ (26.x).`,
     )
   }
 }

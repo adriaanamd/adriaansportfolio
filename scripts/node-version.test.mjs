@@ -16,12 +16,27 @@ test("accepts later patched releases in the Node 24 line", () => {
   assert.equal(isSupportedNodeVersion("24.30.0"), true)
 })
 
+test("accepts the patched Node 26.13.1 release and later 26.x releases", () => {
+  assert.equal(isSupportedNodeVersion("26.13.1"), true)
+  assert.doesNotThrow(() => assertSupportedNodeVersion("26.13.1"))
+  assert.equal(isSupportedNodeVersion("26.14.0"), true)
+})
+
 test("rejects Node 24 releases before the patched floor", () => {
   assert.equal(isSupportedNodeVersion("24.22.0"), false)
   assert.equal(isSupportedNodeVersion("24.0.0"), false)
   assert.throws(
     () => assertSupportedNodeVersion("24.22.0"),
-    /Node\.js 24\.22\.1 or a newer patched 24\.x release/,
+    /Node\.js 24\.22\.1\+ \(24\.x\) or 26\.13\.1\+ \(26\.x\)/,
+  )
+})
+
+test("rejects Node 26 releases before the patched floor", () => {
+  assert.equal(isSupportedNodeVersion("26.13.0"), false)
+  assert.equal(isSupportedNodeVersion("26.0.0"), false)
+  assert.throws(
+    () => assertSupportedNodeVersion("26.13.0"),
+    /Node\.js 24\.22\.1\+ \(24\.x\) or 26\.13\.1\+ \(26\.x\)/,
   )
 })
 
