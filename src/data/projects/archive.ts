@@ -4,7 +4,7 @@ import inkwellImage from "../../project-assets/archive/inkwell.png"
 
 import meatLensImage from "../../project-assets/qa/meatlens-qa.png"
 
-import myLightDrugstoreImage from "../../project-assets/qa/mylightdrugstore-qa.png"
+import myLightDrugstoreImage from "../../project-assets/archive/mylightdrugstore-qa.png"
 
 import snapBoothImage from "../../project-assets/archive/snapbooth.png"
 
