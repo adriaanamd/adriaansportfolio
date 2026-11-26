@@ -233,11 +233,50 @@ export const qaFeaturedProjects: FeaturedProject[] = [
           eyebrow: "01 · Context & Risk",
           title:
             "Untangling a 2009-style procedural PHP library codebase built with a Binalbagan collaborator",
-          body: "Developed in collaboration with a friend in Binalbagan, Negros Occidental for Binalbagan Catholic College, Scan2Borrow began as 72 files (11,008 lines) of classic 2009-style procedural root PHP scripts—mixed HTML/SQL entry points like adboard.php, adstud.php, books_api.php, guest_*.php, and a 1,024-line includes/functions.php—where rewriting workflows risked breaking active library circulation and MySQL compatibility.",
+          body: "Developed in collaboration with a friend in Binalbagan, Negros Occidental for Binalbagan Catholic College, Scan2Borrow began as 72 files (11,008 lines) of classic 2009-style procedural root PHP scripts—mixed HTML/SQL entry points like adboard.php, adstud.php, books_api.php, guest_*.php, and a 1,024-line includes/functions.php—paired with duplicate frontend trees. Executing a full-scale refactor in place risked breaking active library circulation, physical barcode scanning, and existing MySQL data.",
+        },
+        {
+          eyebrow: "02 · Refactor Architecture & Scope",
+          title:
+            "Framework-free PHP modular monolith paired with feature-owned browser ES modules",
+          body: "Without introducing Laravel, React, or a frontend bundler, the codebase was refactored across 681 commits into clean, testable layers tailored for XAMPP/Apache deployment:",
+          bullets: [
+            "Backend Modular Monolith (backend/src/): Separated Application, Bootstrap, Domain, Http, Infrastructure, and Support layers across 18 domain modules behind a single clean-route Apache gateway (backend/public/index.php + PageRouteTable.php).",
+            "Feature-Sliced Vanilla ESM Frontend (frontend/): Reorganized browser code into frontend/app/ (bootstrap, API, session, guards) and feature-owned auth, student, teacher, guest, and staff slices while retiring legacy frontend/pages and frontend/assets/js/pages trees.",
+            "Normalized Circulation & Copy Model: Separated catalog titles (book_titles) from individually barcoded physical copies (book_copies), bulk borrowing sessions (borrowing_transactions / borrowing_items), reservations, renewals, and business audit trails via ordered SQL upgrade scripts.",
+          ],
+        },
+        {
+          eyebrow: "03 · Test Strategy & Coverage",
+          title:
+            "Locking down backend contracts, schema preservation, and frontend parity in CI",
+          body: "Every vertical slice of the refactor was verified by multi-runtime automated quality gates before retiring legacy entry points:",
+          bullets: [
+            "Backend Quality Gate (GitHub Actions backend.yml): Runs 139 PHPUnit Unit & Feature test files (clean-route matrix, CSRF injection, source-access denial, library aide RBAC, PDO MySQL/SQLite contracts) and PHPStan Level 9 with phpstan-strict-rules under a 110s timeout on PHP 8.5.12.",
+            "Native Node Frontend Parity (npm test): Executes 54 native node --test suites enforcing served feature-template parity, role navbar contracts, retired-tree guards, and responsive layout preservation down to 290px mobile viewports.",
+            "HTTP & Browser Parity Smoke Checks: Pairs PowerShell route/module smoke verification (tests/browser/frontend-module-parity.ps1) with targeted contract tests for bulk borrowing, printable barcode batches, and per-book circulation reports.",
+          ],
+        },
+        {
+          eyebrow: "04 · Edge Cases & Key Findings",
+          title:
+            "Fail-closed PHP2Shell guards, template isolation, and normalized circulation integrity",
+          body: "Contract and authorization suites targeted the highest-risk security and operational failure modes across staff, borrower, and guest portals:",
+          bullets: [
+            "Fail-closed runtime & template gating: Rejects PHP runtimes vulnerable to PHP2Shell (CVE-2026-109618 and CVE-2026-109619) at entrypoint startup, while Apache blocks direct reads of static HTML templates so pages stream only after server-side session, role, and CSRF checks.",
+            "Librarian-approved returns & aide scoping: Ensures borrower return submissions stay queued until staff approval frees the physical copy, restricts library aides (access_profile = 'library_aide') from staff/course/irreversible actions, and locks printable barcode batches as immutable snapshots.",
+            "Bounded recommendations & dual-channel OTPs: Verifies content-based catalog shelves (capped at 5 available titles from the borrower's latest 20 searches), profile-change before/after approval queues, and Gmail SMTP / TextBee SIM-pinned SMS OTP flows.",
+          ],
+        },
+        {
+          eyebrow: "05 · Outcome & Release Confidence",
+          title:
+            "A modern, verifiable school library system ready for production XAMPP deployment",
+          body: "What began as a 2009-style procedural PHP project in Binalbagan is now a strictly typed, framework-free modular monolith and feature-sliced ES-module frontend guarded by 193 automated PHPUnit + Node test suites and PHPStan Level 9 CI checks.",
         },
       ],
       takeaway:
-        "Modernizing a 2009-style PHP codebase does not require a heavy framework—clear architectural boundaries and automated contract tests make full-scale refactoring predictable.",
+        "You don't need a heavy framework to modernize a 2009-style PHP codebase—clean domain boundaries, fail-closed route gating, and 193 backend + frontend contract tests turn a full-scale rewrite into a verifiable engineering discipline.",
     },
   },
 ]
