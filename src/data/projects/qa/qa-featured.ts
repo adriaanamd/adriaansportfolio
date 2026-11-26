@@ -185,7 +185,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
   },
   {
     slug: "scan2borrow-qa",
-    title: "Scan2Borrow",
+    title: "Project Scan2Borrow",
     image: scan2BorrowImage,
     eyebrow: "QA & refactor case study · Library system",
     description:
@@ -233,7 +233,7 @@ export const qaFeaturedProjects: FeaturedProject[] = [
           eyebrow: "01 · Context & Risk",
           title:
             "Untangling a 2009-style procedural PHP library codebase built with a Binalbagan collaborator",
-          body: "Developed in collaboration with a friend in Binalbagan, Negros Occidental for Binalbagan Catholic College, Scan2Borrow began as 72 files (11,008 lines) of classic 2009-style procedural root PHP scripts—mixed HTML/SQL entry points like adboard.php, adstud.php, books_api.php, guest_*.php, and a 1,024-line includes/functions.php—paired with duplicate frontend trees. Executing a full-scale refactor in place risked breaking active library circulation, physical barcode scanning, and existing MySQL data.",
+          body: "Developed in collaboration with a friend in Binalbagan, Negros Occidental for Binalbagan Catholic College, Project Scan2Borrow began as 72 files (11,008 lines) of classic 2009-style procedural root PHP scripts—mixed HTML/SQL entry points like adboard.php, adstud.php, books_api.php, guest_*.php, and a 1,024-line includes/functions.php—paired with duplicate frontend trees. Executing a full-scale refactor in place risked breaking active library circulation, physical barcode scanning, and existing MySQL data.",
         },
         {
           eyebrow: "02 · Refactor Architecture & Scope",
